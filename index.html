@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+    $("#click").click(function() {
+        $('html, body').animate({
+            scrollTop: $("#register").offset().top
+        }, 2000);
+    });
+});
+</script>
+<script>
+$(document).ready(function() {
+    var numitems = $("#myList li").length;
+
+    $("ul#myList").css("column-count", Math.round(numitems / 2));
+});
+</script>
+<script type="text/javascript">
+$(document).ready(function() {
+    ajaxMailChimpForm($("#subscribe-form"), $("#subscribe-result"));
+    // Turn the given MailChimp form into an ajax version of it.
+    // If resultElement is given, the subscribe result is set as html to
+    // that element.
+    function ajaxMailChimpForm($form, $resultElement) {
+        // Hijack the submission. We'll submit the form manually.
+        $form.submit(function(e) {
+            e.preventDefault();
+            if (!isValidEmail($form)) {
+                var error = "A valid email address must be provided.";
+                $resultElement.html(error);
+                $resultElement.css("color", "black");
+                $resultElement.css("font-family", "Helvetica Neue, Helvetica, Arial, sans-serif");
+                $resultElement.css("font-weight", "100");
+            } else {
+                $resultElement.css("color", "black");
+                $resultElement.css("font-family", "Helvetica Neue, Helvetica, Arial, sans-serif");
+                $resultElement.css("font-weight", "100");
+                $resultElement.html("Subscribing...");
+                submitSubscribeForm($form, $resultElement);
+            }
+        });
+    }
+    // Validate the email address in the form
+    function isValidEmail($form) {
+        // If email is empty, show error message.
+        // contains just one @
+        var email = $form.find("input[type='email']").val();
+        if (!email || !email.length) {
+            return false;
+        } else if (email.indexOf("@") == -1) {
+            return false;
+        }
+        return true;
+    }
+    // Submit the form with an ajax/jsonp request.
+    // Based on http://stackoverflow.com/a/15120409/215821
+    function submitSubscribeForm($form, $resultElement) {
+        $.ajax({
+            type: "GET",
+            url: $form.attr("action"),
+            data: $form.serialize(),
+            cache: false,
+            dataType: "jsonp",
+            jsonp: "c", // trigger MailChimp to return a JSONP response
+            contentType: "application/json; charset=utf-8",
+            error: function(error) {
+                // According to jquery docs, this is never called for cross-domain JSONP requests
+            },
+            success: function(data) {
+                if (data.result != "success") {
+                    $("form").addClass("error");
+                    var message = data.msg || "Sorry. Unable to subscribe. Please try again later.";
+                    $resultElement.css("color", "black");
+                    $resultElement.css("font-family", "Helvetica Neue, Helvetica, Arial, sans-serif");
+                    $resultElement.css("font-weight", "100");
+                    if (data.msg && data.msg.indexOf("already subscribed") >= 0) {
+                        message = "You're already subscribed. Thank you.";
+                        $resultElement.css("color", "black");
+                        $resultElement.css("font-family", "Helvetica Neue, Helvetica, Arial, sans-serif");
+                        $resultElement.css("font-weight", "100");
+                    }
+                    $resultElement.html(message);
+                } else {
+                    $("form").addClass("success");
+                    $resultElement.css("color", "black");
+                    $resultElement.css("font-family", "Helvetica Neue, Helvetica, Arial, sans-serif");
+                    $resultElement.css("font-weight", "100");
+                    $resultElement.html("Thank you! You are now subscribed.");
+                }
+            }
+        });
+    }
+});
+</script>
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109570314-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-109570314-1');
+    </script>
+    <title>Labrys</title>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <!-- Place this data between the <head> tags of your website -->
+    <meta name="description" content="Issue and invest in bonds directly on the blockchain." />
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" value="">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Labrys" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="http://labrys.io/" />
+    <meta property="og:image" content="http://labrys.io/img/logo.png" />
+    <meta property="og:description" content="" />
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Teko|Open+Sans" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdn.bootcss.com/typed.js/1.1.4/typed.min.js"></script>
+	<style type="text/css">
+		.write{
+			font-size: 44px;
+			color: #AEAEAE;
+		}
+		.containerz{
+			text-align: center;
+			padding-bottom: 20px;
+			padding-top: 50px;
+		}
+		.typed-cursor {
+        opacity: 1;
+			color: #AEAEAE;
+			font-size: 44px;
+        animation: blink .7s infinite;
+    }
+
+    @keyframes blink {
+        0% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+	</style>
+</head>
+
+<body>
+    <header id="home">
+        <div id="overlay">
+            <div class="spinner"></div>
+        </div>
+        <div class="container">
+            <nav class="navbar navbar-expand-lg" id="nav-main">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+				<ul class="list-actions" style="padding-right: 28%; padding-left: 5%;">
+                <li>
+                    <img src="apple-icon-180x180.png" width="20px">
+                </li>
+                <li> <a class="nav-link disabled" style="font-size: 11px;">LABRYS</a> </li>
+				</ul>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+						<li class="nav-item">
+                            <a class="nav-link disabled" href="#home">HOME</a>
+                        </li>
+						<li class="nav-item">
+                            <a class="nav-link disabled" href="/files/labrys_whitepaper_v1.pdf" target="_blank" onclick="window.open('/files/labrys_whitepaper_v1.pdf')">WHITEPAPER</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#bonds">BONDS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#labToken">TOKEN</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#crowdfunding">CROWDFUNDING</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#roadmap">ROADMAP</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#team">TEAM</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#faq">FAQ</a>
+                        </li>
+						<li class="nav-item">
+                            <a class="nav-link disabled" href="#footer">CONTACT</a>
+                        </li>
+                    </ul>
+					
+                </div>
+				
+            </nav>
+            
+            <div class="content">
+                <a class="logo hidden" href="#">
+                    <svg width="100%" viewBox="0 0 603 417" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="logo-svg">
+                        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g id="LABRYS_LOGO_LOCKUP" transform="translate(7.000000, -1.000000)">
+                                <path d="M0,330.263 L0,408 L52.357,408 M254,373 C264.725,373 273.5,381.55 273.5,392 C273.5,402.45 264.725,411 254,411 L220.5,411 L220.5,335 L251,335 C261.725,335 270.5,343.55 270.5,354 C270.5,364.45 261.725,373 251,373 L222.5,373 M333.5,413 L333.5,335 L364,335 C374.725,335 383.5,343.775 383.5,354.5 C383.5,365.225 374.725,374 364,374 L334.5,374" id="Stroke-1" stroke="#FFFFFF" stroke-width="14"></path>
+                                <polyline id="Fill-3" fill="#FFFFFF" points="119.917 331 134.917 331 174.917 417 158.917 417 119.917 331"></polyline>
+                                <polyline id="Fill-4" fill="#FFFFFF" points="134.5 331 119.5 331 79.5 417 95.5 417 134.5 331"></polyline>
+                                <polyline id="Fill-5" fill="#FFFFFF" points="389.262 412.498 374.993 412.718 356.238 379.002 369.714 378.795 389.262 412.498"></polyline>
+                                <polyline id="Fill-6" fill="#FFFFFF" points="427.662 331 442.662 331 474.338 379 459.18 379 427.662 331"></polyline>
+                                <polyline id="Fill-7" fill="#FFFFFF" points="459.662 379 474.662 379 506.338 331 491.18 331 459.662 379"></polyline>
+                                <g id="Group-12" transform="translate(197.000000, 18.000000)">
+                                    <path data-start="0" data-duration="60" d="M270,355.5 L270,395.5" id="Stroke-8" stroke="#FFFFFF" stroke-width="15.2"></path>
+                                    <path data-start="0" data-duration="60" d="M342.612,376.799 C367.439,395.188 387.668,387.833 391.347,376.799 C397.074,359.615 377.232,354.591 369.278,352.891 L368.002,352.599 C360.048,350.899 340.666,345.414 346.394,328.231 C350.071,317.197 370.301,309.842 395.128,328.231" id="Stroke-10" stroke="#FFFFFF" stroke-width="13"></path>
+                                    <path d="M89.123,49.439 L0.545,135.677 L86.956,222.664 L86.969,171.163 L0.545,84.162 L86.867,0.849 L86.867,54.729 M112.922,49.439 L201.5,135.677 L115.089,222.664 L115.075,171.163 L201.5,84.162 L115.178,0.849 L115.178,54.729" id="Stroke-11" stroke="#E1792C" stroke-width="15"></path>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </a>
+				<div class="containerz">
+	<span class="write"></span>
+</div>
+                
+                <p id="tokensale">Token Sale Starts</p>
+                <div id="clock">
+                    <!-- <div class="months"><span>00</span>Months</div>
+                	<div class="days"><span>00</span>Days</div>
+                	<div class="hours"><span>00</span>Hours</div>
+               		<div class="minutes"><span>00</span>Minutes</div>
+           			<div class="seconds"><span>00</span>Seconds</div> -->
+                </div>
+            </div>
+            <div class="arrow">
+                <a id="click" onmouseover="" style="cursor: pointer;">
+						<img class="pulse" src="/img/arrow-down.png" alt="" >
+					</a>
+            </div>
+        </div>
+    </header>
+    <nav class="navbar nav-up fixed-top navbar-expand-lg" id="nav-secondary">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="/img/logo.svg" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent2">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#bonds">Bonds</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#labToken">LAB Token</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#crowdfunding">Crowdfunding</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#roadmap">Roadmap</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#team">Team</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#faq">FAQ</a>
+                    </li>
+                </ul>
+            </div>
+            <ul class="navbar-nav my-2 my-lg-0 list-actions">
+                <li>
+                    <a href="/files/labrys_whitepaper_v1.pdf" target="_blank" onclick="window.open('/files/labrys_whitepaper_v1.pdf')">
+                        <button type="button">Whitepaper</button>
+                    </a>
+                </li>
+                <li>
+                    <a class="link-register" target="_blank">
+                        <button type="button"><span>Register</span></button>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <section id="register">
+        <div class="container">
+            <h2>Subscribe</h2>
+            <form class="forms emailInput" id="subscribe-form" action="https://labrys.us16.list-manage.com/subscribe/post-json?u=9b49cc6b014e6c399a79a308d&amp;id=24c25c8410" method="get">
+                <input type="hidden" name="u" value="9b49cc6b014e6c399a79a308d">
+                <input type="hidden" name="id" value="24c25c8410">
+                <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Email Address">
+                <input type="submit" value="Submit" name="subscribe" id="mc-embedded-subscribe" class="btn">
+            </form>
+        </div>
+        <div id="subscribe-result" class="subres">
+        </div>
+        <!-- Fix for resizing issue, socialsLarge not displayed for screenwidth<465 -->
+        <!-- When final social is added, uncomment last in socials large and top socialsSmall and last in socialsSmalls  -->
+        <!-- also remove medium link from second ul of socialsmalls -->
+        <ul class="socials socialsLarge">
+            <li><a href="https://www.facebook.com/labrys.io/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+            <li><a href="https://twitter.com/Labrys_io" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+            <li><a href="mailto:info@labrys.io"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+            <li><a href="https://medium.com/labrys" target="_blank"><i class="fa fa-medium" aria-hidden="true"></i></a></li>
+            <li><a href="https://labrys.rocket.chat/home" target="_blank"><i class="fa fa-commenting" aria-hidden="true"></i></a></li>
+            <li><a href="https://www.reddit.com/r/Labrys_io/" target="_blank"><i class="fa fa-reddit-alien" aria-hidden="true"></i></a></li>
+            <!-- <li><a href="#"><i class="fa fa-btc" aria-hidden="true"></i></a></li> -->
+        </ul>
+        <ul class="socials socialsSmall">
+            <li><a href="https://www.facebook.com/labrys.io/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+            <li><a href="https://twitter.com/Labrys_io" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+            <li><a href="mailto:info@labrys.io"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+            <!-- <li><a href="https://medium.com/labrys" target="_blank"><i class="fa fa-medium" aria-hidden="true"></i></a></li> -->
+        </ul>
+        <br>
+        <br>
+        <br>
+        <ul class="socials socialsSmall">
+            <li><a href="https://medium.com/labrys" target="_blank"><i class="fa fa-medium" aria-hidden="true"></i></a></li>
+            <li><a href="https://labrys.rocket.chat/home" target="_blank"><i class="fa fa-commenting" aria-hidden="true"></i></a></li>
+            <li><a href="https://www.reddit.com/r/Labrys_io/" target="_blank"><i class="fa fa-reddit-alien" aria-hidden="true"></i></a></li>
+            <!-- <li><a href="#"><i class="fa fa-btc" aria-hidden="true"></i></a></li> -->
+        </ul>
+    </section>
+    <section id="spill" class="">
+        <div class="container">
+            <div class="media">
+                <div class="media-body align-self-top">
+                    <h2 class="text-center">ABOUT LABRYS</h2>
+                    <h4 class="text-centerj">
+						We are building a platform to radically change the way individuals and institutions invest in bonds. Built on Ethereum, the Labrys Platform will utilise the benefits of blockchain to forge the most efficient investment gateway to the global bond market. Through the tokenisation of bonds, we are able to eliminate middlemen, establishing a direct relationship between issuer and investor. 
+					</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="navS" id="bonds">
+	    <section id="bondsInner">
+	        <div class="container">
+	            <div class="description mx-auto">
+	                <h2 class="text-center">Bond market</h2>
+	                <p class="text-centerj">A bond is a financial instrument issued by companies in order to borrow large amounts of capital. The bonds are purchased by investors to recieve regular interest payments higher than those traditionally offered by banks. The bond market is the world’s largest asset class, valued at over $217 Trillion USD in 2017. In comparison, the total value of the global stock market is only $76.3 Trillion USD and the total market capitalisation of all cryptocurrencies is merely $175 Billion USD. As strong believers in the blockchain movement, Labrys is excited about the potential to bring a substantial amount of capital into the cryptocurrency ecosystem by building a bridge between these two markets.</p>
+	            </div>
+	            <div class="circles">
+	                <img src="/img/market-stock.png" alt="" id="circle-stock" />
+	                <img src="/img/market-gold.png" alt="" id="circle-gold">
+	                <img src="/img/market-all.png" alt="" id="circle-all">
+	                <img src="/img/market-btc.png" alt="" id="circle-btc">
+	                <img src="/img/market-crypto.png" alt="" id="circle-crypto">
+	            </div>
+	            <div class="text-centerj">
+	                <h2>Limitations</h2>
+	                <p>Plagued with fees and inefficiencies, the bond brokerage market is structured in a way that forces the bond through many hands before reaching the investor. This inflates fees, forcing large minimum investment amounts which can start as high as $500 000 USD restricting investors to those of high net worth. The Labrys platform will remove these inefficiencies by making middlemen redudant.</p>
+	            </div>
+	        </div>
+	    </section>
+	    <section id="spill" class="">
+	        <div class="container">
+	            <div class="media">
+	                <div class="d-flex align-self-top mr-3 img-container">
+	                    <img class="spill-img1" src="/img/app-screen1.png" alt="" id="screen1">
+	                    <img class="spill-img2" src="/img/mobile-phone.png" alt="" id="screen2">
+	                </div>
+	                <div class="media-body align-self-top">
+	                    <h2 class="mt-0">Labrys Wallet</h2>
+	                    <h4 class="text-centerk">The Labrys Wallet is the tool to gain ownership of blockchain based bonds. It is the gateway to all communication with the underlying Ethereum smart contracts, which secure the investments. Users will manage their own bond portfolio from within the Wallet which includes the buying and selling of bonds and collection of interest payments.
+							<br>
+						</h4>
+	                </div>
+	            </div>
+	        </div>
+	    </section>
+    </section>
+    <section class="navS" id="labToken">
+	    <section id="futureInner">
+	        <h2 class="text-centerj">LAB token</h2>
+	        <div class="container">
+	            <div class="row">
+	                <div class="col-sm-12 col-md-6 col-lg-4">
+	                    <div class="img-wrap">
+	                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 1000" style="enable-background:new 0 0 1000 1000;" xml:space="preserve" id="img-token">
+	                            <style type="text/css">
+	                            .st0 {
+	                                fill: #E1883F;
+	                            }
+	                            </style>
+	                            <g id="svg-token">
+	                                <g>
+	                                    <path class="st0" d="M541.9,435H463l-41.4,77h165.1L541.9,435z M569.3,502h-91.2l28.9-57h29.1L569.3,502z M469,445h26.9l-28.9,57
+								h-28.6L469,445z" />
+	                                    <g>
+	                                        <path class="st0" d="M450.9,549H372l-41.4,77h165.1L450.9,549z M347.4,616l30.6-57h26.9l-28.9,57H347.4z M416.1,559h29.1l33.2,57
+									h-91.2L416.1,559z" />
+	                                        <path class="st0" d="M640.9,549H562l-41.4,77h165.1L640.9,549z M537.4,616l30.6-57h26.9l-28.9,57H537.4z M606.1,559h29.1l33.2,57
+									h-91.2L606.1,559z" />
+	                                        <path class="st0" d="M270,663l-41.4,77h165.1l-44.8-77H270z M245.4,730l30.6-57h26.9l-28.9,57H245.4z M285.1,730l28.9-57h29.1
+									l33.2,57H285.1z" />
+	                                        <path class="st0" d="M463,663l-41.4,77h165.1l-44.8-77H463z M438.4,730l30.6-57h26.9l-28.9,57H438.4z M478.1,730l28.9-57h29.1
+									l33.2,57H478.1z" />
+	                                        <path class="st0" d="M740.9,663H662l-41.4,77h165.1L740.9,663z M637.4,730l30.6-57h26.9l-28.9,57H637.4z M706.1,673h29.1l33.2,57
+									h-91.2L706.1,673z" />
+	                                    </g>
+	                                </g>
+	                            </g>
+	                            <g id="svg-sparkle1">
+	                                <path class="st0" d="M463,261.5h-21.5L430,250v-21.5c0-2.5-2-4.5-4.5-4.5s-4.5,2-4.5,4.5V250l-11.5,11.5H388c-2.5,0-4.5,2-4.5,4.5
+							c0,2.5,2,4.5,4.5,4.5h22.5L421,281v22.5c0,2.5,2,4.5,4.5,4.5s4.5-2,4.5-4.5V281l10.5-10.5H463c2.5,0,4.5-2,4.5-4.5
+							C467.5,263.5,465.5,261.5,463,261.5z" />
+	                            </g>
+	                            <g id="svg-sparkle2">
+	                                <path class="st0" d="M699,374h-21.5L666,362.5V341c0-2.5-2-4.5-4.5-4.5s-4.5,2-4.5,4.5v21.5L645.5,374H624c-2.5,0-4.5,2-4.5,4.5
+							c0,2.5,2,4.5,4.5,4.5h22.5l10.5,10.5V416c0,2.5,2,4.5,4.5,4.5s4.5-2,4.5-4.5v-22.5l10.5-10.5H699c2.5,0,4.5-2,4.5-4.5
+							C703.5,376,701.5,374,699,374z" />
+	                            </g>
+	                            <g id="svg-sparkle3">
+	                                <path class="st0" d="M334,470h-21.5L301,458.5V437c0-2.5-2-4.5-4.5-4.5s-4.5,2-4.5,4.5v21.5L280.5,470H259c-2.5,0-4.5,2-4.5,4.5
+							c0,2.5,2,4.5,4.5,4.5h22.5l10.5,10.5V512c0,2.5,2,4.5,4.5,4.5s4.5-2,4.5-4.5v-22.5l10.5-10.5H334c2.5,0,4.5-2,4.5-4.5
+							C338.5,472,336.5,470,334,470z" />
+	                            </g>
+	                        </svg>
+	                    </div>
+	                    <div class="media-body align-self-center text-centerj">
+	                        <h3>Stake LAB Tokens</h3>
+	                        <p>To gain ownership of a bond, user&#39;s must lock up their LAB tokens in a smart contract for the duration of their investment, thus reducing the circulating supply. By doing so, user&#39;s will be entitled to receive regular interest payments direct to their Labrys Wallet.</p>
+	                    </div>
+	                </div>
+	                <div class="col-sm-12 col-md-6 col-lg-4">
+	                    <div class="img-wrap">
+	                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 1000" style="enable-background:new 0 0 1000 1000;" xml:space="preserve" width="100%">
+	                            <style type="text/css">
+	                            .st0 {
+	                                fill: #EF8121;
+	                            }
+
+	                            .st1 {
+	                                fill: #FFFFFF;
+	                            }
+
+	                            .st2 {
+	                                fill: none;
+	                                stroke: #EF8121;
+	                                stroke-width: 10;
+	                                stroke-miterlimit: 10;
+	                            }
+	                            </style>
+	                            <g id="WALLET_BACK">
+	                                <g>
+	                                    <path class="st0" d="M656.8,418.9h-11v-42c0-15.6-12.7-28.3-28.3-28.3H355.2l-0.1,0c-0.1,0-13.6-0.5-21.2,6.7
+						c-3.5,3.4-5.2,7.9-5.2,13.9h-11c0-9,2.9-16.4,8.7-21.9c10.6-10.1,27.2-9.8,29.2-9.7h262c21.7,0,39.3,17.6,39.3,39.3V418.9z" />
+	                                </g>
+	                            </g>
+	                            <g id="lab-token">
+	                                <g>
+	                                    <g>
+	                                        <path class="st1" d="M411.7,405.4c-9.9-17.3-8.8-47-8.8-47c1.1-54.9,38-89,83.5-89s79.1,31.9,82.4,82.4c0,0,5.5,39.6-18.1,70.2" />
+	                                        <path class="st0" d="M554.2,424.7l-7-5.4c22.2-28.9,17.3-66.6,17.2-67l0-0.3c-1.5-23.5-9.9-43.3-24.1-57.3
+							c-13.9-13.7-32.6-21-54-21c-45.6,0-78.1,34.8-79.1,84.7c0,0.4-0.9,28.7,8.3,44.7l-7.6,4.4c-10.5-18.2-9.5-48.1-9.4-49.4
+							c0.5-27.4,9.7-51,26.4-68c15.9-16.3,37.8-25.2,61.6-25.2c48.5,0,83.4,34.7,86.8,86.4C573.6,354.7,578.1,393.7,554.2,424.7z" />
+	                                    </g>
+	                                    <g>
+	                                        <circle class="st1" cx="486.4" cy="370.5" r="82.4" />
+	                                        <path class="st0" d="M486.4,457.3c-47.9,0-86.8-38.9-86.8-86.8s38.9-86.8,86.8-86.8s86.8,38.9,86.8,86.8S534.3,457.3,486.4,457.3
+							z M486.4,292.5c-43,0-78,35-78,78s35,78,78,78s78-35,78-78S529.4,292.5,486.4,292.5z" />
+	                                    </g>
+	                                    <g>
+	                                        <g>
+	                                            <path class="st0" d="M484.4,420.2l-40.2-40.5l10-9.8l-10-10.1l40.2-38.8l0,27.5L462.3,370l22.1,22.2L484.4,420.2z M452.3,379.8
+								l26.4,26.6l0-11.8L458.2,374L452.3,379.8z M452.3,359.9l6,6l20.4-19.8v-11.7L452.3,359.9z" />
+	                                        </g>
+	                                    </g>
+	                                    <g>
+	                                        <g>
+	                                            <path class="st0" d="M489.6,420.2l0-28l22.1-22.2l-22.1-21.5l0,0V321l40.2,38.8l-10,10.1l10,9.8L489.6,420.2z M495.3,394.6
+								l0,11.8l26.4-26.6l-5.9-5.8L495.3,394.6z M495.3,346.1l20.4,19.8l6-6l-26.4-25.4V346.1z" />
+	                                        </g>
+	                                    </g>
+	                                </g>
+	                                <path class="st2" d="M598.5,474.4" />
+	                            </g>
+	                            <g id="WALLET_FRONT">
+	                                <g>
+	                                    <g>
+	                                        <path class="st1" d="M323.2,366.6c-0.5,20.4,32.2,19.3,32.2,19.3h262.1c18.6,0,33.8,15.2,33.8,33.8v228
+							c0,18.6-15.2,33.8-33.8,33.8H355.4c-18.6,0-33.8-15.2-33.8-33.8V470.5L323.2,366.6z" />
+	                                        <path class="st0" d="M617.5,687H355.4c-21.7,0-39.3-17.6-39.3-39.3V470.5l1.6-103.6c0-0.1,0-0.3,0-0.4l11,0.2l0,0.3
+							c0,2.8,0.9,5,2.8,6.9c5.8,5.8,19.5,6.6,23.8,6.5l0.2,0h262.1c21.7,0,39.3,17.6,39.3,39.3v228C656.8,669.4,639.1,687,617.5,687z
+							M328.4,385.3l-1.3,85.3l0,177.1c0,15.6,12.7,28.3,28.3,28.3h262.1c15.6,0,28.3-12.7,28.3-28.3v-228c0-15.6-12.7-28.3-28.3-28.3
+							h-262C353.2,391.4,338.8,391.6,328.4,385.3z" />
+	                                    </g>
+	                                    <g>
+	                                        <g>
+	                                            <path class="st1" d="M651.3,452.5H665c11.8,0,21.4,9.6,21.4,21.4v0v52.6v35.2c0,7.3-5.9,13.2-13.2,13.2H545.8
+								c-7.3,0-13.2-5.9-13.2-13.2v-56c0-7.3,5.9-13.2,13.2-13.2h112.1c0,0,28.6,1.1,28.6-14.3" />
+	                                            <path class="st0" d="M673.2,580.4H545.8c-10.3,0-18.7-8.4-18.7-18.7v-56c0-10.3,8.4-18.7,18.7-18.7l112.3,0c6,0.2,17-1,21.2-5
+								c1.1-1.1,1.6-2.2,1.6-3.8v-4.3c0-8.8-7.1-15.9-15.9-15.9h-13.7v-11H665c14.8,0,26.9,12.1,26.9,26.9v87.8
+								C691.9,572,683.5,580.4,673.2,580.4z M545.8,498c-4.2,0-7.7,3.5-7.7,7.7v56c0,4.2,3.5,7.7,7.7,7.7h127.5c4.2,0,7.7-3.5,7.7-7.7
+								v-67.8c-9.2,4.3-21.1,4.1-23.2,4.1H545.8z" />
+	                                        </g>
+	                                        <g>
+	                                            <circle class="st1" cx="579.8" cy="535.3" r="15.4" />
+	                                            <path class="st0" d="M579.8,556.2c-11.5,0-20.9-9.4-20.9-20.9s9.4-20.9,20.9-20.9s20.9,9.4,20.9,20.9S591.3,556.2,579.8,556.2z
+								M579.8,525.5c-5.5,0-9.9,4.4-9.9,9.9s4.4,9.9,9.9,9.9s9.9-4.4,9.9-9.9S585.3,525.5,579.8,525.5z" />
+	                                        </g>
+	                                    </g>
+	                                </g>
+	                            </g>
+	                        </svg>
+	                    </div>
+	                    <div class="media-body align-self-center text-centerj">
+	                        <h3>Interest payments</h3>
+	                        <p>Interest payments will be paid directly to the Labrys Wallet in the form of LAB Tokens. As the total supply of tokens is fixed, these tokens will be bought on the open market, creating price support. </p>
+	                    </div>
+	                </div>
+	                <div class="col-sm-12 col-md-12 col-lg-4">
+	                    <div class="img-wrap">
+	                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 1000" style="enable-background:new 0 0 1000 1000;" xml:space="preserve">
+	                            <style type="text/css">
+	                            .ste0 {
+	                                fill: none;
+	                                stroke: #ef8121;
+	                                stroke-width: 10;
+	                                stroke-miterlimit: 10;
+	                            }
+
+	                            .ste1 {
+	                                fill: #FCFCFC;
+	                                stroke: #ef8121;
+	                                stroke-width: 10;
+	                                stroke-miterlimit: 10;
+	                            }
+
+	                            .ste2 {
+	                                fill: #FFFFFF;
+	                                stroke: #ef8121;
+	                                stroke-width: 10;
+	                                stroke-miterlimit: 10;
+	                            }
+	                            </style>
+	                            <g id="world">
+	                                <g>
+	                                    <line class="ste0" x1="285.5" y1="425" x2="705" y2="561.2" />
+	                                    <circle class="ste0" cx="494.5" cy="495.5" r="220.5" />
+	                                    <line class="ste0" x1="562.1" y1="285.6" x2="425.9" y2="705.1" />
+	                                    <path class="ste0" d="M704.1,564.1c0,0-15.1-128.4-173.9-180c0,0-140.3-47.2-245.5,43.8" />
+	                                    <path class="ste0" d="M284.8,427.4c31.7,135.4,173,179.7,173,179.7c158.8,51.6,246.5-43.5,246.5-43.5" />
+	                                    <path class="ste0" d="M603.3,690.5c-23.8-45.3-28.9-105.9-9.4-165.9c18.4-56.7,55-101,97.7-124.8" />
+	                                    <path class="ste0" d="M297.8,591.3c45.9-22.7,85.6-68.7,105-128.7c18.4-56.7,13.9-120.2-6.7-164.6" />
+	                                    <circle class="ste1" cx="457.1" cy="372.6" r="21" />
+	                                    <circle class="ste1" cx="674" cy="484.9" r="17" />
+	                                    <circle class="ste1" cx="319.5" cy="506.4" r="17" />
+	                                </g>
+	                            </g>
+	                            <g id="person">
+	                                <g>
+	                                    <path class="ste2" d="M400,694v-63.9c0-49,40.1-89.1,89.1-89.1h4.8c49,0,89.1,40.1,89.1,89.1l2,65.9c0,0-39,20-92.5,20
+				C457.8,716,422,705,400,694z" />
+	                                    <circle class="ste1" cx="493" cy="487" r="69" />
+	                                    <polyline class="ste0" points="452.5,542.9 493,610 532,544" />
+	                                </g>
+	                            </g>
+	                        </svg>
+	                    </div>
+	                    <div class="media-body align-self-center text-centerj">
+	                        <h3>BORDERLESS INVESTING</h3>
+	                        <p>By bringing bonds to a decentralised platform, Labrys makes investing in bonds an inclusive and permissionless process. This democratisation of the bond market will enable accelerated growth by reaching investors previously locked out of the market.</p>
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="row" id="section-debt-market">
+	                <div class="col-sm-12 col-lg-5">
+	                    <div class="img-wrap">
+	                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 1000" style="enable-background:new 0 0 1000 1000;" xml:space="preserve" width="100%" id="svg-debt-market">
+	                            <style type="text/css">
+	                            .stb0 {
+	                                fill: #FFFFFF;
+	                                stroke: #EF8121;
+	                                stroke-width: 8;
+	                                stroke-miterlimit: 10;
+	                            }
+
+	                            .stb1 {
+	                                fill: #232323;
+	                            }
+
+	                            .stb2 {
+	                                fill: none;
+	                                stroke: #EF8121;
+	                                stroke-width: 9;
+	                                stroke-miterlimit: 10;
+	                            }
+
+	                            .stb3 {
+	                                fill: #FFFFFF;
+	                                stroke: #EF8121;
+	                                stroke-width: 9;
+	                                stroke-miterlimit: 10;
+	                            }
+
+	                            .stb4 {
+	                                fill: #EF8121;
+	                            }
+	                            </style>
+	                            <g id="svg-token--debt">
+	                                <circle class="stb0" cx="479.5" cy="390.5" r="116.5" />
+	                                <circle class="stb0" cx="479.5" cy="390.5" r="96.6" />
+	                                <g>
+	                                    <g>
+	                                        <path class="stb1" d="M416.3,373.9v-4h6.9v4c6,1.2,9.1,5.9,9.1,13.2v1.7h-8v-2.2c0-3.9-1.5-5.3-4.2-5.3s-4.2,1.5-4.2,5.3
+						c0,3.8,1.5,6.5,7.2,11.1c6.9,5.5,9.3,9.8,9.3,15.9c0,7.3-3.2,12-9.2,13.2v3.9h-6.9v-3.9c-6.1-1.2-9.2-5.9-9.2-13.2v-3.7h8v4.2
+						c0,3.9,1.7,5.2,4.4,5.2c2.7,0,4.4-1.4,4.4-5.2s-1.5-6.6-7.2-11.1c-6.9-5.5-9.3-9.8-9.3-15.9C407.3,379.8,410.3,375.2,416.3,373.9
+						z" />
+	                                        <path class="stb1" d="M450.5,380.5c-2.7,0-4.4,1.5-4.4,5.3v5.8h-8v-5.2c0-8.6,4.3-13.6,12.6-13.6c8.3,0,12.6,4.9,12.6,13.6
+						c0,7.2-2.6,12.9-10.5,21.3c-5,5.4-6.4,7.9-6.4,10.8c0,0.4,0,0.8,0.1,1.2h16v7.7h-24.5v-6.6c0-6,2.2-10.6,8.5-17.2
+						c6.5-6.9,8.3-11.1,8.3-16.9C454.8,381.8,453.2,380.5,450.5,380.5z" />
+	                                        <path class="stb1" d="M473.8,380.2c6.5,0,8-3.2,9.3-6.8h5.7v53.9h-8.5v-41.1h-6.5V380.2z" />
+	                                        <path class="stb1" d="M523.9,373.4v7.4l-12.5,46.5H503l12.4-46.2h-16.9v-7.7H523.9z" />
+	                                        <path class="stb1" d="M527.1,373.4h26.2v7.7h-8.9v46.2h-8.5v-46.2h-8.9V373.4z" />
+	                                    </g>
+	                                    <g>
+	                                        <path class="stb1" d="M409.6,353.1h3.5v4.9c0,2.5-1.3,3.9-3.7,3.9c-2.4,0-3.7-1.4-3.7-3.9v-8.1c0-2.5,1.3-3.9,3.7-3.9
+						c2.4,0,3.7,1.4,3.7,3.9v1.5h-2.3v-1.7c0-1.1-0.5-1.5-1.3-1.5s-1.3,0.4-1.3,1.5v8.4c0,1.1,0.5,1.5,1.3,1.5s1.3-0.4,1.3-1.5v-2.9
+						h-1.1V353.1z" />
+	                                        <path class="stb1" d="M414.7,346.2h2.5v13.4h4.1v2.2h-6.5V346.2z" />
+	                                        <path class="stb1" d="M422.1,349.9c0-2.5,1.3-3.9,3.7-3.9c2.4,0,3.7,1.4,3.7,3.9v8.1c0,2.5-1.3,3.9-3.7,3.9
+						c-2.4,0-3.7-1.4-3.7-3.9V349.9z M424.6,358.2c0,1.1,0.5,1.5,1.3,1.5c0.8,0,1.3-0.4,1.3-1.5v-8.4c0-1.1-0.5-1.5-1.3-1.5
+						c-0.8,0-1.3,0.4-1.3,1.5V358.2z" />
+	                                        <path class="stb1" d="M438.6,349.8v0.6c0,1.6-0.5,2.6-1.6,3.1v0c1.3,0.5,1.8,1.7,1.8,3.3v1.3c0,2.4-1.3,3.7-3.7,3.7h-3.9v-15.6
+						h3.7C437.5,346.2,438.6,347.3,438.6,349.8z M433.6,348.4v4.1h1c0.9,0,1.5-0.4,1.5-1.6V350c0-1.1-0.4-1.6-1.3-1.6H433.6z
+						M433.6,354.7v4.8h1.4c0.8,0,1.3-0.4,1.3-1.5v-1.4c0-1.4-0.5-1.9-1.6-1.9H433.6z" />
+	                                        <path class="stb1" d="M448.3,361.8h-2.5l-0.4-2.8h-3l-0.4,2.8h-2.3l2.5-15.6h3.6L448.3,361.8z M442.6,356.8h2.4l-1.2-7.9h0
+						L442.6,356.8z" />
+	                                        <path class="stb1" d="M449.4,346.2h2.5v13.4h4.1v2.2h-6.5V346.2z" />
+	                                        <path class="stb1" d="M460.5,346.2h3.9c2.5,0,3.7,1.4,3.7,3.9v7.9c0,2.5-1.2,3.9-3.7,3.9h-3.9V346.2z M463,348.4v11.1h1.4
+						c0.8,0,1.3-0.4,1.3-1.5v-8.1c0-1.1-0.5-1.5-1.3-1.5H463z" />
+	                                        <path class="stb1" d="M472.1,352.7h3.4v2.2h-3.4v4.6h4.3v2.2h-6.7v-15.6h6.7v2.2h-4.3V352.7z" />
+	                                        <path class="stb1" d="M485.3,349.8v0.6c0,1.6-0.5,2.6-1.6,3.1v0c1.3,0.5,1.8,1.7,1.8,3.3v1.3c0,2.4-1.3,3.7-3.7,3.7h-3.9v-15.6
+						h3.7C484.2,346.2,485.3,347.3,485.3,349.8z M480.4,348.4v4.1h1c0.9,0,1.5-0.4,1.5-1.6V350c0-1.1-0.4-1.6-1.3-1.6H480.4z
+						M480.4,354.7v4.8h1.4c0.8,0,1.3-0.4,1.3-1.5v-1.4c0-1.4-0.5-1.9-1.6-1.9H480.4z" />
+	                                        <path class="stb1" d="M486.3,346.2h7.6v2.2h-2.6v13.4h-2.5v-13.4h-2.6V346.2z" />
+	                                        <path class="stb1" d="M503.7,357.2L503.7,357.2l1.7-11.1h3.4v15.6h-2.3v-11.2h0l-1.7,11.2h-2.3l-1.8-11h0v11h-2.2v-15.6h3.4
+						L503.7,357.2z" />
+	                                        <path class="stb1" d="M518.6,361.8h-2.5l-0.4-2.8h-3l-0.4,2.8H510l2.5-15.6h3.6L518.6,361.8z M513,356.8h2.4l-1.2-7.9h0L513,356.8
+						z" />
+	                                        <path class="stb1" d="M525,361.8c-0.1-0.4-0.2-0.6-0.2-1.9v-2.5c0-1.4-0.5-2-1.6-2h-0.9v6.4h-2.5v-15.6h3.7c2.6,0,3.7,1.2,3.7,3.6
+						v1.2c0,1.6-0.5,2.6-1.6,3.1v0c1.2,0.5,1.6,1.7,1.6,3.3v2.4c0,0.8,0,1.3,0.3,1.9H525z M522.3,348.4v4.8h1c0.9,0,1.5-0.4,1.5-1.6
+						V350c0-1.1-0.4-1.6-1.3-1.6H522.3z" />
+	                                        <path class="stb1" d="M532,355.5l-0.8,1.4v4.8h-2.5v-15.6h2.5v6.8h0l3.2-6.8h2.5l-3.4,7l3.4,8.6h-2.5L532,355.5z" />
+	                                        <path class="stb1" d="M540.6,352.7h3.4v2.2h-3.4v4.6h4.3v2.2h-6.7v-15.6h6.7v2.2h-4.3V352.7z" />
+	                                        <path class="stb1" d="M545.6,346.2h7.6v2.2h-2.6v13.4h-2.5v-13.4h-2.6V346.2z" />
+	                                    </g>
+	                                </g>
+	                            </g>
+	                            <g id="FUNNEL">
+	                                <rect x="467.8" y="592" class="stb2" width="28.2" height="65.5" />
+	                                <path class="stb3" d="M499.8,692.5h-35c-6.6,0-12-5.4-12-12v-11c0-6.6,5.4-12,12-12h35c6.6,0,12,5.4,12,12v11
+				C511.8,687.1,506.4,692.5,499.8,692.5z" />
+	                                <path class="stb3" d="M564.5,854.5v11.1c0,5.6,4.6,10.2,10.2,10.2H619l-9.4-21.3l9.4-23h-46.8" />
+	                                <path class="stb3" d="M396,854.5v11.1c0,5.6-4.6,10.2-10.2,10.2h-44.3l9.4-21.3l-9.4-23h46.8" />
+	                                <path class="stb2" d="M533,699h181.5c0,0,0,25.5-30,25.5H557" />
+	                                <path class="stb2" d="M558,725h122.5c0,0,0,25.5-30,25.5h-87" />
+	                                <path class="stb2" d="M564,751h85.5c0,0,0,25.5-30,25.5h-61" />
+	                                <path class="stb2" d="M559,777h35.5c0,0,0,25.5-30,25.5H541" />
+	                                <path class="stb2" d="M430.5,699H249c0,0,0,25.5,30,25.5h127.5" />
+	                                <path class="stb2" d="M405.5,725H283c0,0,0,25.5,30,25.5h87" />
+	                                <path class="stb2" d="M399.5,751H314c0,0,0,25.5,30,25.5h61" />
+	                                <path class="stb2" d="M404.5,777H369c0,0,0,25.5,30,25.5h23.5" />
+	                                <circle class="stb3" cx="482.2" cy="753.5" r="78" />
+	                                <path class="stb3" d="M584.5,858.5h-207c-6.6,0-12-5.4-12-12v-29c0-6.6,5.4-12,12-12h207c6.6,0,12,5.4,12,12v29
+				C596.5,853.1,591.1,858.5,584.5,858.5z" />
+	                                <path class="st2" d="M498.7,590.5h-32.3c-4.3,0-7.8-3.5-7.8-7.8v-8.3c0-4.3,3.5-7.8,7.8-7.8h32.3c4.3,0,7.8,3.5,7.8,7.8v8.3
+				C506.5,587,503,590.5,498.7,590.5z" />
+	                                <polyline class="stb3" points="581.5,458.5 500.5,564.5 461.5,564.5 383.5,461.5 	" />
+	                                <path class="stb3" d="M592.5,460.5h-224c-6.6,0-12-5.4-12-12v-18c0-6.6,5.4-12,12-12h224c6.6,0,12,5.4,12,12v18
+				C604.5,455.1,599.1,460.5,592.5,460.5z" />
+	                                <g>
+	                                    <path class="stb4" d="M390.8,821.1h3.3v21h-3.3V821.1z" />
+	                                    <path class="stb4" d="M399.5,826.9L399.5,826.9l-0.1,15.2h-3v-21h4.1l3.3,12.6h0.1v-12.6h2.9v21h-3.4L399.5,826.9z" />
+	                                    <path class="stb4" d="M423.5,834.3v2.8c0,3.4-1.7,5.3-4.9,5.3c-3.2,0-4.9-1.9-4.9-5.3v-10.9c0-3.4,1.7-5.3,4.9-5.3
+					c3.2,0,4.9,1.9,4.9,5.3v2h-3.1v-2.2c0-1.5-0.7-2.1-1.7-2.1c-1.1,0-1.7,0.6-1.7,2.1v11.3c0,1.5,0.7,2,1.7,2c1,0,1.7-0.5,1.7-2v-3
+					H423.5z" />
+	                                    <path class="stb4" d="M432.4,842.1c-0.2-0.5-0.3-0.9-0.3-2.6v-3.3c0-1.9-0.7-2.7-2.2-2.7h-1.1v8.5h-3.3v-21h5
+					c3.4,0,4.9,1.6,4.9,4.8v1.6c0,2.2-0.7,3.5-2.2,4.2v0.1c1.6,0.7,2.2,2.2,2.2,4.4v3.2c0,1,0,1.8,0.4,2.5H432.4z M428.8,824.1v6.4
+					h1.3c1.2,0,2-0.5,2-2.2v-2.1c0-1.5-0.5-2.2-1.7-2.2H428.8z" />
+	                                    <path class="stb4" d="M440.4,835.1l-4.2-14h3.4l2.5,9.6h0.1l2.5-9.6h3.1l-4.2,14v7h-3.3V835.1z" />
+	                                    <path class="stb4" d="M459,826.3v2.7c0,3.4-1.6,5.2-4.9,5.2h-1.6v7.9h-3.3v-21h4.9C457.3,821.1,459,822.9,459,826.3z M452.5,824.1
+					v7.1h1.6c1.1,0,1.6-0.5,1.6-2v-3.1c0-1.5-0.6-2-1.6-2H452.5z" />
+	                                    <path class="stb4" d="M459.5,821.1h10.2v3h-3.4v18H463v-18h-3.5V821.1z" />
+	                                    <path class="stb4" d="M470.9,826.1c0-3.4,1.8-5.3,5-5.3c3.2,0,5,1.9,5,5.3v10.9c0,3.4-1.8,5.3-5,5.3c-3.2,0-5-1.9-5-5.3V826.1z
+					M474.2,837.3c0,1.5,0.7,2.1,1.7,2.1c1,0,1.7-0.6,1.7-2.1v-11.3c0-1.5-0.7-2.1-1.7-2.1c-1.1,0-1.7,0.6-1.7,2.1V837.3z" />
+	                                    <path class="stb4" d="M495.1,830.9L495.1,830.9l-1.2,11.2h-4.5l-2.3-21h3.2l1.7,16.6h0.1l1.6-16.6h3.2l1.6,16.7h0.1l1.7-16.7h2.9
+					l-2.3,21h-4.4L495.1,830.9z" />
+	                                    <path class="stb4" d="M507.9,829.9h4.5v3h-4.5v6.1h5.7v3h-9v-21h9v3h-5.7V829.9z" />
+	                                    <path class="stb4" d="M519.3,821.1h10.2v3h-3.4v18h-3.3v-18h-3.5V821.1z" />
+	                                    <path class="stb4" d="M537.9,842.1c-0.2-0.5-0.3-0.9-0.3-2.6v-3.3c0-1.9-0.7-2.7-2.2-2.7h-1.1v8.5H531v-21h5c3.4,0,4.9,1.6,4.9,4.8
+					v1.6c0,2.2-0.7,3.5-2.2,4.2v0.1c1.7,0.7,2.2,2.2,2.2,4.4v3.2c0,1,0,1.8,0.4,2.5H537.9z M534.3,824.1v6.4h1.3c1.2,0,2-0.5,2-2.2
+					v-2.1c0-1.5-0.5-2.2-1.7-2.2H534.3z" />
+	                                    <path class="stb4" d="M546.2,821.1v16.2c0,1.5,0.7,2,1.7,2c1.1,0,1.7-0.5,1.7-2v-16.2h3.1v16c0,3.4-1.7,5.3-4.9,5.3
+					c-3.2,0-4.9-1.9-4.9-5.3v-16H546.2z" />
+	                                    <path class="stb4" d="M559.4,820.9c3.2,0,4.9,1.9,4.9,5.3v0.7h-3.1v-0.9c0-1.5-0.6-2.1-1.6-2.1c-1.1,0-1.7,0.6-1.7,2.1
+					c0,1.5,0.7,2.7,2.8,4.6c2.8,2.4,3.6,4.2,3.6,6.6c0,3.4-1.7,5.3-4.9,5.3c-3.2,0-4.9-1.9-4.9-5.3v-1.3h3.1v1.5c0,1.5,0.7,2,1.7,2
+					c1.1,0,1.7-0.5,1.7-2c0-1.5-0.7-2.7-2.8-4.6c-2.8-2.4-3.6-4.2-3.6-6.6C554.5,822.8,556.2,820.9,559.4,820.9z" />
+	                                    <path class="stb4" d="M565.2,821.1h10.2v3H572v18h-3.3v-18h-3.5V821.1z" />
+	                                </g>
+	                                <g>
+	                                    <path class="stb1" d="M448.3,731.4v3.9c0,4.7-2.4,7.5-7,7.5c-4.6,0-7-2.7-7-7.5v-15.4c0-4.7,2.4-7.5,7-7.5c4.6,0,7,2.7,7,7.5v2.9
+					h-4.4v-3.2c0-2.1-0.9-2.9-2.4-2.9c-1.5,0-2.4,0.8-2.4,2.9v16c0,2.1,0.9,2.9,2.4,2.9c1.5,0,2.4-0.8,2.4-2.9v-4.2H448.3z" />
+	                                    <path class="stb1" d="M460.9,742.5c-0.3-0.8-0.4-1.2-0.4-3.6v-4.7c0-2.8-0.9-3.8-3.1-3.8h-1.6v12.1h-4.7v-29.7h7
+					c4.8,0,6.9,2.2,6.9,6.8v2.3c0,3.1-1,5-3.1,6v0.1c2.3,1,3.1,3.2,3.1,6.3v4.6c0,1.4,0,2.5,0.5,3.6H460.9z M455.8,717v9.1h1.8
+					c1.7,0,2.8-0.8,2.8-3.1v-2.9c0-2.1-0.7-3.1-2.4-3.1H455.8z" />
+	                                    <path class="stb1" d="M472.1,732.6l-5.9-19.8h4.9l3.5,13.5h0.1l3.5-13.5h4.5l-5.9,19.8v9.8h-4.7V732.6z" />
+	                                    <path class="stb1" d="M498.4,720.1v3.9c0,4.7-2.3,7.3-7,7.3h-2.2v11.1h-4.7v-29.7h6.9C496.1,712.8,498.4,715.4,498.4,720.1z
+					M489.2,717v10h2.2c1.5,0,2.3-0.7,2.3-2.8v-4.5c0-2.1-0.8-2.8-2.3-2.8H489.2z" />
+	                                    <path class="stb1" d="M499.2,712.8h14.4v4.2h-4.9v25.4h-4.7V717h-4.9V712.8z" />
+	                                    <path class="stb1" d="M515.2,719.9c0-4.7,2.5-7.5,7.1-7.5c4.6,0,7.1,2.7,7.1,7.5v15.4c0,4.7-2.5,7.5-7.1,7.5
+					c-4.6,0-7.1-2.7-7.1-7.5V719.9z M519.9,735.6c0,2.1,0.9,2.9,2.4,2.9s2.4-0.8,2.4-2.9v-16c0-2.1-0.9-2.9-2.4-2.9s-2.4,0.8-2.4,2.9
+					V735.6z" />
+	                                </g>
+	                                <g>
+	                                    <path class="stb1" d="M438.8,751.5v-2.7h4.6v2.7c4,0.8,6,3.9,6,8.7v1.1h-5.3v-1.5c0-2.5-1-3.5-2.8-3.5c-1.8,0-2.8,1-2.8,3.5
+					c0,2.5,1,4.3,4.8,7.3c4.6,3.7,6.2,6.5,6.2,10.6c0,4.8-2.1,8-6.1,8.8v2.6h-4.6v-2.6c-4-0.8-6.1-3.9-6.1-8.8v-2.4h5.3v2.8
+					c0,2.5,1.1,3.5,2.9,3.5s2.9-0.9,2.9-3.5s-1-4.4-4.8-7.3c-4.6-3.6-6.2-6.5-6.2-10.6C432.9,755.4,434.8,752.4,438.8,751.5z" />
+	                                    <path class="stb1" d="M456.7,755.6c4.3,0,5.3-2.1,6.2-4.5h3.8v35.7H461v-27.2h-4.3V755.6z" />
+	                                    <path class="stb1" d="M489.9,778c0,6-2.8,9.3-8.6,9.3c-5.5,0-8.4-3.3-8.4-9v-0.9h5.3v1.3c0,2.5,1.1,3.5,2.9,3.5c2,0,3.1-1,3.1-4.4
+					v-6.5h-0.1c-1,2-2.6,3.1-5.1,3.1c-4.1,0-6.2-2.9-6.2-8.2v-6.5c0-5.7,3-9,8.5-9s8.5,3.3,8.5,9V778z M484.2,765.8v-6.4
+					c0-2.5-1.1-3.5-2.9-3.5s-2.9,0.9-2.9,3.5v6.4c0,2.5,1.1,3.5,2.9,3.5S484.2,768.3,484.2,765.8z" />
+	                                    <path class="stb1" d="M493.1,759.7c0-5.7,3-9,8.5-9c5.5,0,8.5,3.3,8.5,9v18.6c0,5.7-3,9-8.5,9c-5.5,0-8.5-3.3-8.5-9V759.7z
+					M498.7,778.6c0,2.5,1.1,3.5,2.9,3.5s2.9-1,2.9-3.5v-19.3c0-2.5-1.1-3.5-2.9-3.5s-2.9,1-2.9,3.5V778.6z" />
+	                                    <path class="stb1" d="M530.5,759.3v1.3c0,3.7-1.1,6-3.6,7.1v0.1c3,1.2,4.2,3.8,4.2,7.6v2.9c0,5.5-2.9,8.5-8.5,8.5h-8.8v-35.7h8.5
+					C528,751.1,530.5,753.8,530.5,759.3z M519.4,756.2v9.4h2.2c2.1,0,3.4-0.9,3.4-3.8v-2c0-2.5-0.9-3.7-2.9-3.7H519.4z M519.4,770.8
+					v11h3.2c1.9,0,2.9-0.9,2.9-3.5v-3.1c0-3.3-1.1-4.3-3.6-4.3H519.4z" />
+	                                </g>
+	                            </g>
+	                            <g id="MARKS">
+	                            </g>
+	                        </svg>
+	                    </div>
+	                </div>
+	                <div class="col-sm-12 col-lg-7 text-centerk">
+	                    <h3>Connecting the markets</h3>
+	                    <p>As true believers in the blockchain movement, the Labrys team are entirely committed to the success of Blockchain technology globally. This means bringing the technology and all of its benefits to the wider investment and cryptocurrency community. Labrys believes that the best way to do this is to connect the world's largest market, the bond market, with Blockchain technology. The Labrys Wallet platform will build this bridge and allow the fiat currency that is currently invested in bonds to be funnelled through to the cryptocurrency market where bonds can be provided more cheaply and efficiently.</p>
+	                </div>
+	            </div>
+	        </div>
+	        <h2 class="text-centers">WHO WILL USE LABRYS?</h2>
+	        <div class="container">
+	            <div class="row">
+	                <div class="col-sm-12 col-md-6 col-lg-4">
+	                    <div class="img-wrap">
+	                        <img src="1.png" style="margin:50px 0px">
+	                    </div>
+	                    <div class="media-body align-self-center text-centerj">
+	                        <h3>LARGE INSTITUTIONS</h3>
+	                        <p>By eliminating inefficiencies, Labrys incentivises institutions and large scale investors to start transacting bonds over the blockchain. A major technology shift is taking place in the finance industry, moving away from traditional models towards blockchain based systems. Labrys expects this trend to accelerate and encapsulate the bond market.</p>
+	                    </div>
+	                </div>
+	                <div class="col-sm-12 col-md-6 col-lg-4">
+	                    <div class="img-wrap">
+	                        <img src="2.png" style="margin:50px 0px">
+	                    </div>
+	                    <div class="media-body align-self-center text-centerj">
+	                        <h3>CRYPTO HOARDERS</h3>
+	                        <p>Cryptocurrency holdings have become so valuable that it has become difficult to justify selling these assets. This has resulted in large pools of capital sitting dormant, unable to earn interest. The Labrys Wallet provides a way for these investors to earn risk-free interest payments on their cryptocurrency holdings without the need to ever leave the crypto market.</p>
+	                    </div>
+	                </div>
+	                <div class="col-sm-12 col-md-12 col-lg-4">
+	                    <div class="img-wrap">
+	                        <img src="3.png" style="margin:50px 0px">
+	                    </div>
+	                    <div class="media-body align-self-center text-centerj">
+	                        <h3>SMALL SCALE INVESTORS</h3>
+	                        <p>Investors who have previously been priced out of the market due to large minimum investment amounts are now given the opportunity to invest in this world-class financial instrument. Thus giving everyone in the world, regardless of their wealth, access to fixed, reliable income. </p>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </section>
+    </section>
+    <section class="navS" id="crowdfunding">
+	    <section id="icoInner" class="mx-auto">
+	        <div class="container">
+	            <h2 class="text-center">Crowdfunding</h2>
+	            <div class="canvas-container mx-auto">
+	                <div id="c-crowdfund"></div>
+	            </div>
+	            <div class="row info">
+	                <div class="col-sm-12 col-md-4">
+	                    <div class="dot"></div>
+	                    <h3>75%</h3>
+	                    <p>Public crowdsale allocation</p>
+	                </div>
+	                <div class="col-sm-12 col-md-4">
+	                    <div class="dot"></div>
+	                    <h3>15%</h3>
+	                    <p>Labrys founding team allocation</p>
+	                </div>
+	                <div class="col-sm-12 col-md-4">
+	                    <div class="dot"></div>
+	                    <h3>10%</h3>
+	                    <p>Company reserve</p>
+	                </div>
+	            </div>
+	            <hr>
+	            <div class="row info-secondary">
+	                <div class="col">
+	                    <h3>Token Name</h3>
+	                    <p>LAB</p>
+	                </div>
+	                <div class="col">
+	                    <h3>Token Supply</h3>
+	                    <p>430,000,000</p>
+	                </div>
+	                <div class="col">
+	                    <h3>Initial Price</h3>
+	                    <p>$0.10 USD</p>
+	                </div>
+	            </div>
+	        </div>
+	    </section>
+    </section>
+    <section class="navS" id="roadmap">
+	    <section id="roadmapInner">
+	        <h2 class="text-center">Roadmap</h2>
+	        <ul class="timeline">
+	            <li class="header"></li>
+	            <li>
+	                <p><strong>Quarter 1, 2018:</strong> Distribute LAB tokens to investors</p>
+	            </li>
+	            <li>
+	                <p><strong>Quarter 1, 2018:</strong> Acquire bonds and build portfolio</p>
+	            </li>
+	            <li>
+	                <p><strong>Quarter 2, 2018:</strong> Secure required financial services licenses</p>
+	            </li>
+	            <li>
+	                <p><strong>Quarter 3, 2018:</strong> Launch Labrys Wallet</p>
+	            </li>
+	            <li>
+	                <p><strong>Quarter 4, 2018:</strong> Release bonds on Labrys Wallet</p>
+	            </li>
+	            <li>
+	                <p><strong>Quarter 1, 2019:</strong> Expand bond portfolio</p>
+	            </li>
+	            <li>
+	                <p><strong>Quarter 2, 2019:</strong> First bonds issued directly on blockchain</p>
+	            </li>
+	            <li class="footer"></li>
+	        </ul>
+	    </section>
+    </section>
+    <section class="navS" id="team">
+	    <section id="teamInner">
+	        <div class="container">
+	            <h2 class="text-center">The Team</h2>
+	            <div class="row justify-content-center">
+	                <div class="col-sm-12 col-md-6 col-lg-3">
+	                    <div class="card border-0">
+	                        <img class="card-img-top rounded-circle" src="/img/taber.jpg" alt="Card image cap">
+	                        <div class="card-body">
+	                            <div class="nameAndTitle">
+	                                <h4 class="card-title">Taber Silver</h4>
+	                                <h5>Managing Director and Founder</h5>
+	                            </div>
+	                            <div class="teamDescriptions">
+	                                <p class="card-text">Experience with traditional bond markets, working for fixed income specialist firms within Australia. Several years' experience in institutional cryptocurrency trading and investing.</p>
+	                            </div>
+	                        </div>
+	                        <div class="card-footer border-0">
+	                            <nav class="nav nav-pills nav-fill">
+	                                <a class="nav-item nav-item" href="https://www.linkedin.com/in/taber-silver-65402a98/"><i class="icon-linkedin2"></i></a>
+	                            </nav>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="col-sm-12 col-md-6 col-lg-3">
+	                    <div class="card border-0">
+	                        <img class="card-img-top rounded-circle" src="/img/locky.jpg" alt="Locky">
+	                        <div class="card-body">
+	                            <div class="nameAndTitle">
+	                                <h4 class="card-title">Lachlan Feeney</h4>
+	                                <h5>Chief Technology Officer and Cofounder</h5>
+	                            </div>
+	                            <div class="teamDescriptions">
+	                                <p class="card-text">Involved in cryptocurrency since its origins and currently works as Senior Technology Officer at Civic Ledger building blockchain solutions for public sector markets.</p>
+	                            </div>
+	                        </div>
+	                        <div class="card-footer border-0">
+	                            <nav class="nav nav-pills nav-fill">
+	                                <a class="nav-item nav-item" href="https://www.linkedin.com/in/lachlan-feeney/"><i class="icon-linkedin2"></i></a>
+	                            </nav>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="col-sm-12 col-md-6 col-lg-3">
+	                    <div class="card border-0">
+	                        <img class="card-img-top rounded-circle" src="/img/drg.jpg" alt="Locky">
+	                        <div class="card-body">
+	                            <div class="nameAndTitle">
+	                                <h4 class="card-title">DR GREG TIMBREL</h4>
+	                                <h5>Information Systems Consultant</h5>
+	                            </div>
+	                            <div class="teamDescriptions">
+	                                <p class="card-text">An Academic, writer and consultant with over 25 years' experience working in the IT industry. Author of "Information Systems Consulting."</p>
+	                            </div>
+	                        </div>
+	                        <div class="card-footer border-0">
+	                            <nav class="nav nav-pills nav-fill">
+	                                <a class="nav-item nav-item" href="https://www.linkedin.com/in/dtimbrell/"><i class="icon-linkedin2"></i></a>
+	                            </nav>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="col-sm-12 col-md-6 col-lg-3">
+	                    <div class="card border-0">
+	                        <img class="card-img-top rounded-circle" src="/img/lucas.jpg" alt="Locky">
+	                        <div class="card-body">
+	                            <div class="nameAndTitle">
+	                                <h4 class="card-title">LUCAS CULLEN</h4>
+	                                <h5>Information Systems Consultant</h5>
+	                            </div>
+	                            <div class="teamDescriptions">
+	                                <p class="card-text"> Full stack .Net developer with a mathematics background and a strong understanding of design patterns and cryptographic algorithms. Consulting for companies in this industry over the past 5 years.</p>
+	                            </div>
+	                        </div>
+	                        <div class="card-footer border-0">
+	                            <nav class="nav nav-pills nav-fill">
+	                                <a class="nav-item nav-item" href="https://www.linkedin.com/in/lucascullen/"><i class="icon-linkedin2"></i></a>
+	                            </nav>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="row justify-content-center">
+	                <div class="col-sm-12 col-md-6 col-lg-3">
+	                    <div class="card border-0">
+	                        <img class="card-img-top rounded-circle" src="/img/yas.jpg" alt="Locky">
+	                        <div class="card-body">
+	                            <div class="nameAndTitle">
+	                                <h4 class="card-title">Yasmine Everstets</h4>
+	                                <h5>PR and Marketing Director</h5>
+	                            </div>
+	                            <div class="teamDescriptions">
+	                                <p class="card-text"> The internationally experienced as Social Media Coordinator for Freeminds Media, combining a love for cryptocurrencies with marketing expertise.</p>
+	                            </div>
+	                        </div>
+	                        <div class="card-footer border-0">
+	                            <nav class="nav nav-pills nav-fill">
+	                                <a class="nav-item nav-item" href="https://www.linkedin.com/in/yasmineeverstets/"><i class="icon-linkedin2"></i></a>
+	                            </nav>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="col-sm-12 col-md-6 col-lg-3">
+	                    <div class="card border-0">
+	                        <img class="card-img-top rounded-circle" src="/img/james.jpg" alt="Locky">
+	                        <div class="card-body">
+	                            <div class="nameAndTitle">
+	                                <h4 class="card-title">James Blinco</h4>
+	                                <h5>Digital Strategist</h5>
+	                            </div>
+	                            <div class="teamDescriptions">
+	                                <p class="card-text"> Involved in the Blockchain space since 2012, gathering an extensive understanding of Cryptocurrencies and Cryptoeconomics through a passion for technology and disruption.</p>
+	                            </div>
+	                        </div>
+	                        <div class="card-footer border-0">
+	                            <nav class="nav nav-pills nav-fill">
+	                                <a class="nav-item nav-item" href="https://www.linkedin.com/in/james-blinco-976410109/"><i class="icon-linkedin2"></i></a>
+	                            </nav>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="col-sm-12 col-md-6 col-lg-3">
+	                    <div class="card border-0">
+	                        <img class="card-img-top rounded-circle" src="/img/katrina.jpg" alt="Locky">
+	                        <div class="card-body">
+	                            <div class="nameAndTitle">
+	                                <h4 class="card-title">Katrina Donaghy</h4>
+	                                <h5>Blockchain Strategy Lead</h5>
+	                            </div>
+	                            <div class="teamDescriptions">
+	                                <p class="card-text"> Has extensive experience in public policy and early stage commercialisation. 20 years working in both public and not-for-profit sectors with a focus on business development, project delivery and revenue diversification.</p>
+	                            </div>
+	                        </div>
+	                        <div class="card-footer border-0">
+	                            <nav class="nav nav-pills nav-fill">
+	                                <a class="nav-item nav-item" href="https://www.linkedin.com/in/katrina-donaghy-49989629"><i class="icon-linkedin2"></i></a>
+	                            </nav>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </section>
+    </section>
+    <section class="navS" id="faq">
+	    <section id="faqInner">
+	        <h2>Frequently Asked Questions</h2>
+	        <h3>Bonds</h3>
+	        <div class="faq-items" data-children=".item">
+	            <div class="item">
+	                <a data-toggle="collapse" href="#collapse1" aria-expanded="false" aria-controls="collapse1">What is a Bond?</a>
+	                <div class="collapse" id="collapse1">
+	                    <p>A bond is a contract between two parties. Companies or governments issue bonds because they need to borrow large amounts of money. They issue bonds and investors buy them (thereby giving the people who issued the bond money). Bonds have a maturity date. This means that at some point, the bond issuer has to pay back the money to the investors. They also have to pay the investors interest known as a coupon. Bonds are usually traded through brokers and are part of a financial instrument group called Fixed Income. Banks and financial institutions offer loans on different terms against the security of assets.
+	                    </p>
+	                </div>
+	            </div>
+	            <div class="item">
+	                <a data-toggle="collapse" href="#collapse3" aria-expanded="false" aria-controls="collapseExample">What is the interest rate of a bond?</a>
+	                <div class="collapse" id="collapse3">
+	                    <p>The interest rate of a bond is called the coupon payment; the amount paid by a bond varies depending on the risk. These typically range from 5-10%pa.</p>
+	                </div>
+	            </div>
+	            <div class="item">
+	                <a data-toggle="collapse" href="#collapse4" aria-expanded="false" aria-controls="collapseExample">How often do bonds pay coupons?						</a>
+	                <div class="collapse" id="collapse4">
+	                    <p>Coupon payments are typically paid semi-annually or annually, however, Labrys will allow users to recieve coupons much more regularly.</p>
+	                </div>
+	            </div>
+	            <div class="item">
+	                <a data-toggle="collapse" href="#collapse2" aria-expanded="false" aria-controls="collapseExample">What&#39;s the difference between Sovereign, Corporate and Government Bonds?</a>
+	                <div class="collapse" id="collapse2">
+	                    <p>Government bonds are those issued by National Government, Sovereign bonds are similar but denoted in a foreign currency. Corporate bonds are issued by blue chip companies.
+	                    </p>
+	                </div>
+	            </div>
+	        </div>
+	        <h3>Crowdsale</h3>
+	        <div class="faq-items" data-children=".item">
+	            <div class="item">
+	                <a data-toggle="collapse" href="#collapse5" aria-expanded="false" aria-controls="collapseExample">How do I participate in the Labrys crowdsale?
+				</a>
+	                <div class="collapse" id="collapse5">
+	                    <p>You must register to gain entry to the crowdsale, once registered you will be able to send ETH from your registered address to the crowdsale address once it becomes available.</p>
+	                </div>
+	            </div>
+	            <div class="item">
+	                <a data-toggle="collapse" href="#collapse6" aria-expanded="false" aria-controls="collapseExample">What currencies do you accept in the crowdsale?
+				</a>
+	                <div class="collapse" id="collapse6">
+	                    <p>We will be accepting ETH directly to the LAB Token smart contract.
+	                    </p>
+	                </div>
+	            </div>
+	            <div class="item">
+	                <a data-toggle="collapse" href="#collapse7" aria-expanded="false" aria-controls="collapseExample">Do you have a soft cap and hard cap?
+				</a>
+	                <div class="collapse" id="collapse7">
+	                    <p>Yes. Our soft cap is $10M USD and hard cap is $30M USD.</p>
+	                </div>
+	            </div>
+	            <div class="item">
+	                <a data-toggle="collapse" href="#collapse8" aria-expanded="false" aria-controls="collapseExample">How long will the crowdsale run for?						</a>
+	                <div class="collapse" id="collapse8">
+	                    <p>The crowdsale will run for a total of 2 weeks, or until hard cap is reached.</p>
+	                </div>
+	            </div>
+	            <div class="item">
+	                <a data-toggle="collapse" href="#collapse9" aria-expanded="false" aria-controls="collapseExample">What happens if you do not reach the soft cap?						</a>
+	                <div class="collapse" id="collapse9">
+	                    <p>If we do not reach our minimum funding goal of $10M, Labrys intends to refund all contributions. </p>
+	                </div>
+	            </div>
+	            <div class="item">
+	                <a data-toggle="collapse" href="#collapse10" aria-expanded="false" aria-controls="collapseExample">What address can I use to participate?
+				</a>
+	                <div class="collapse" id="collapse10">
+	                    <p>Only register an ETH address where you control the private key for, do NOT register an exchange address. We suggest using MyEtherWallet.</p>
+	                </div>
+	            </div>
+	            <div class="item">
+	                <a data-toggle="collapse" href="#collapse11" aria-expanded="false" aria-controls="collapseExample">What happens to unsold LAB Tokens?
+				</a>
+	                <div class="collapse" id="collapse11">
+	                    <p>Unsold tokens will be locked in the company reserve for a period of 12 months.</p>
+	                </div>
+	            </div>
+	        </div>
+	        <h3>The LAB Token</h3>
+	        <div class="faq-items" data-children=".item">
+	            <div class="item">
+	                <a data-toggle="collapse" href="#collapse12" aria-expanded="false" aria-controls="collapseExample">What is a LAB Token?
+
+				</a>
+	                <div class="collapse" id="collapse12">
+	                    <p>The LAB Token is an ERC20 Ethereum Token. It is the native token of the Labrys ecosystem and will be key to accessing bonds on the platform.
+	                    </p>
+	                </div>
+	            </div>
+	            <div class="item">
+	                <a data-toggle="collapse" href="#collapse13" aria-expanded="false" aria-controls="collapseExample">What is the purpose of the LAB Token?
+				</a>
+	                <div class="collapse" id="collapse13">
+	                    <p>The only way user’s can gain access to bond ownership is to lock LAB Tokens in smart contract through the Labrys Wallet, making them an integral part of the Labrys ecosystem.
+	                    </p>
+	                </div>
+	            </div>
+	            <div class="item">
+	                <a data-toggle="collapse" href="#collapse14" aria-expanded="false" aria-controls="collapseExample">How many LAB tokens will be minted?
+				</a>
+	                <div class="collapse" id="collapse14">
+	                    <p>430,000,000 LAB tokens will be minted. 300,000,000 of which to be distributed through the public crowdsale. The supply of LAB tokens is fixed, meaning no further LAB tokens will ever be created or distributed after the ICO.</p>
+	                </div>
+	            </div>
+	            <div class="item">
+	                <a data-toggle="collapse" href="#collapse15" aria-expanded="false" aria-controls="collapseExample">How do I buy/sell LAB tokens after the ICO?
+				</a>
+	                <div class="collapse" id="collapse15">
+	                    <p>LAB tokens will be tradeable on third party cryptocurrency exchanges after the ICO. We will be in contact with all major exchanges to list LAB as soon as possible. </p>
+	                </div>
+	            </div>
+	            <div class="item">
+	                <a data-toggle="collapse" href="#collapse16" aria-expanded="false" aria-controls="collapseExample">What wallet can I hold my LAB token in?
+				</a>
+	                <div class="collapse" id="collapse16">
+	                    <p>LAB Tokens can be held in any Ethereum wallet that has support for ERC20 tokens. We recommend using MyEtherWallet. LAB Tokens must be held in the official Labrys Wallet (to be released) in order to access bond coupon payments. </p>
+	                </div>
+	            </div>
+	            <div class="item">
+	                <a data-toggle="collapse" href="#collapse17" aria-expanded="false" aria-controls="collapseExample">What will LAB Tokens initially be priced at?
+
+				</a>
+	                <div class="collapse" id="collapse17">
+	                    <p>LAB Tokens will have an initial price of $0.10 per token. This price will vary once LAB begins trading on cryptocurrency exchanges. </p>
+	                </div>
+	            </div>
+	        </div>
+	        <h3>Regulation</h3>
+	        <div class="faq-items" data-children=".item">
+	            <div class="item">
+	                <a data-toggle="collapse" href="#collapse18" aria-expanded="false" aria-controls="collapseExample">Are LAB tokens securities, derivatives or a managed investment scheme?
+
+
+				</a>
+	                <div class="collapse" id="collapse18">
+	                    <p>No. LAB Tokens are an instrument required to access the rights to bonds once the platform is launched and proper licenses held.
+	                    </p>
+	                </div>
+	            </div>
+	            <div class="item">
+	                <a data-toggle="collapse" href="#collapse19" aria-expanded="false" aria-controls="collapseExample">Will Labrys comply with the current regulatory framework?
+
+				</a>
+	                <div class="collapse" id="collapse19">
+	                    <p>Labrys has had extensive legal counselling and is compliant with all local and international regulation. The financial licenses acquisition process will begin immediately after the crowdsale concludes.
+	                    </p>
+	                </div>
+	            </div>
+	            <div class="item">
+	                <a data-toggle="collapse" href="#collapse20" aria-expanded="false" aria-controls="collapseExample">Will I need to provide personal details to use the wallet?
+
+				</a>
+	                <div class="collapse" id="collapse20">
+	                    <p>Labrys will employ basic KYC requirements to use the Labrys Wallet to stay compliant with current and future regulatory frameworks.</p>
+	                </div>
+	            </div>
+	        </div>
+	        <h3>Labrys Platform</h3>
+	        <div class="faq-items" data-children=".item">
+	            <div class="item">
+	                <a data-toggle="collapse" href="#collapse21" aria-expanded="false" aria-controls="collapseExample">How do users access bonds on the platform?</a>
+	                <div class="collapse" id="collapse21">
+	                    <p>Users will have direct access to bonds via the Labrys Wallet, users will need a balance of LAB Tokens of which will be locked in a smart contract while claiming ownership of a bond portion.</p>
+	                </div>
+	            </div>
+	            <div class="item">
+	                <a data-toggle="collapse" href="#collapse22" aria-expanded="false" aria-controls="collapseExample">How often will bonds be released on the wallet?</a>
+	                <div class="collapse" id="collapse22">
+	                    <p>A range of bonds will be available on the platform as soon as the Labrys Wallet is released. Subsequent capital raising rounds will be executed in order to source additional bonds.</p>
+	                </div>
+	            </div>
+	            <div class="item">
+	                <a data-toggle="collapse" href="#collapse23" aria-expanded="false" aria-controls="collapseExample">Will you issue bonds directly onto the platform for corporations?
+
+				</a>
+	                <div class="collapse" id="collapse23">
+	                    <p>Labrys aims to create and issue corporate bonds directly on the blockchain. This is in our roadmap and scheduled to begin testing as soon as the initial platform is set up and working.
+	                    </p>
+	                </div>
+	            </div>
+	            <div class="item">
+	                <a data-toggle="collapse" href="#collapse24" aria-expanded="false" aria-controls="collapseExample">If I hold the rights to a bond on the platform how do I receive interest?</a>
+	                <div class="collapse" id="collapse24">
+	                    <p>User’s who lock up LAB Tokens in the Labrys Wallet will receive regular interest payments directly to their Labrys Wallet.
+	                    </p>
+	                </div>
+	            </div>
+	        </div>
+	        <h3>Labrys Company</h3>
+	        <div class="faq-items" data-children=".item">
+	            <div class="item">
+	                <a data-toggle="collapse" href="#collapse25" aria-expanded="false" aria-controls="collapseExample">Have you had any VC funding or Seed Investment?</a>
+	                <div class="collapse" id="collapse25">
+	                    <p>We have raised initial capital through seed investors to fund the crowdsale.
+	                    </p>
+	                </div>
+	            </div>
+	            <div class="item">
+	                <a data-toggle="collapse" href="#collapse26" aria-expanded="false" aria-controls="collapseExample">Is Labrys a registered company?
+				</a>
+	                <div class="collapse" id="collapse26">
+	                    <p>Yes, Labrys is registered with the Australian Securities and Investment Commission under: LABRYS GROUP PTY LTD, ACN#621993173
+	                    </p>
+	                </div>
+	            </div>
+	        </div>
+	        <h3>General</h3>
+	        <div class="faq-items" data-children=".item">
+	            <div class="item">
+	                <a data-toggle="collapse" href="#collapse28" aria-expanded="false" aria-controls="collapseExample">I need help setting up an Ethereum wallet.</a>
+	                <div class="collapse" id="collapse28">
+	                    <p>Follow this guide ( <a href="https://blockgeeks.com/how-to-setup-an-ethereum-wallet-and-buy-a-custom-token-a-guide-for-coinbase-users/">link</a> ) to set up your wallet with MyEtherWallet.
+	                    </p>
+	                </div>
+	            </div>
+	        </div>
+	    </section>
+    <footer id="footer">
+		
+        <div class="container">
+            <div class="row mx-auto" style="max-width: 1200px;">
+                <div class="col-lg-2">
+                    <img src="/img/logo.svg" alt="Logo" class="logo">
+                </div>
+                <div class="col-lg-6">
+                    <ul class="footer-list">
+                        <li>Labrys Group Pty Ltd</li>
+                        <li>ACN: #621993173</li>
+                    </ul>
+                </div>
+                <div class="col-sm-12 col-lg-4">
+                    <div class="row footer-social">
+                        <a href="https://medium.com/labrys" target="_blank"><i class="icon-medium"></i></a>
+                        <!-- <a href="" target="_blank"><i class="icon-telegram"></i></a>
+                        <a href="" target="_blank"><i class="icon-slack"></i></a>
+                        <a href="" target="_blank"><i class="icon-github"></i></a> -->
+                        <a href="https://www.reddit.com/r/Labrys_io/" target="_blank"><i class="icon-reddit"></i></a>
+                        <a href="mailto:info@labrys.io" target="_blank"><i class="icon-envelop"></i></a>
+                        <a href="https://twitter.com/labrys_io" target="_blank"><i class="icon-twitter"></i></a>
+                        <a href="https://www.facebook.com/Labrys-1988649661415629/" target="_blank"><i class="icon-facebook"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+		
+    </footer>
+    <script src="/js/all.js"></script>
+    <script>
+    var overlay = document.getElementById("overlay");
+    var loading = 0;
+
+    window.addEventListener('load', function() {
+        window.setTimeout(partB, 0);
+    })
+
+    function partB() {
+        $('#overlay').animate({ opacity: 0 }, function() {
+            $("body").css("overflow-y", "auto");
+            overlay.style.display = 'none';
+        })
+
+    }
+    </script>
+		
+	<script type="text/javascript">
+	$(function(){
+        $(".write").typed({
+            strings: ["BRINGING BONDS TO BLOCKCHAIN.", "DEMOCRATISING THE BOND MARKET.", "REAL WORLD SMART BONDS."],
+            typeSpeed: 70,
+			backDelay: 2500,
+			loop: true,
+        });
+    });
+</script>	
+		
+</body>
+
+</html>
