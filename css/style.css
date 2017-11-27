@@ -14,9 +14,32 @@
 }
 
 @media screen and (min-width: 992px) {
-    .navBarRight {
-        float:inherit;
-        margin-left:250px;
+    .navbar-nav {
+        padding-left: 850px !important;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .navbar-nav {
+        padding-left: 320px !important;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .navbar-nav {
+        padding-left: 580px !important;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .navbar-nav {
+        padding-left: 730px !important;
+    }
+}
+
+@media screen and (min-width: 2560px) {
+    .navbar-nav {
+        padding-left: 1850px !important;
     }
 }
 
@@ -3783,6 +3806,13 @@ tbody.collapse.show {
     padding-left: 0;
     margin-bottom: 0;
     list-style: none;
+}
+
+@media screen and (min-width: 992px) {
+    .navbar-nav {
+        width:562px;
+        float:right;
+    }
 }
 
 .navbar-nav .nav-link {
