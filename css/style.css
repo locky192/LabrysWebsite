@@ -4,6 +4,7 @@
  * Copyright 2011-2017 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+
 .activeNavBar {
     color:grey!important;
 }
@@ -3592,6 +3593,10 @@ tbody.collapse.show {
 .nav-link:hover {
     text-decoration: none;
     color: #ef8121;
+}
+
+.labrysLink{
+    color:#AEAEAE!important;
 }
 
 .nav-links:focus,
