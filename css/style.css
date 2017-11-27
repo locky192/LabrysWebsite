@@ -6,7 +6,7 @@
  */
 
 .activeNavBar {
-    color:grey!important;
+    color: grey!important;
 }
 
 @media print {
@@ -3595,8 +3595,14 @@ tbody.collapse.show {
     color: #ef8121;
 }
 
-.labrysLink{
-    color:#AEAEAE!important;
+.labrysLink {
+    color: #AEAEAE!important;
+}
+
+@media screen and (max-width:991px){
+    .labrysLogo {
+        display:none !important;
+    }
 }
 
 .nav-links:focus,
@@ -8506,6 +8512,7 @@ a.bg-dark:hover {
 
 
 
+
 /* Clear floats after the columns */
 
 .rowe:after {
@@ -8695,6 +8702,7 @@ a.text-dark:hover {
 
 
 
+
 /*============================================================================
   Dependency-free breakpoint mixin
     - http://blog.grayghostvisuals.com/sass/sass-media-query-mixin/
@@ -8837,7 +8845,7 @@ section {
 }
 
 .navS {
-    padding:0;
+    padding: 0;
 }
 
 @media screen and (min-width: 768px) {
@@ -8879,7 +8887,7 @@ section {
 
 #nav-secondary .nav-link:focus,
 #nav-secondary .nav-link:hover {
-    color:#ef8121;
+    color: #ef8121;
 }
 
 #register {
@@ -9305,20 +9313,22 @@ section {
     border: 3px solid black;
     z-index: 1;
 }
+
 .socialsSmall {
-    display:flex;
-    margin:1px;
+    display: flex;
+    margin: 1px;
 }
+
 .socialsLarge {
-    display:none;
+    display: none;
 }
 
 @media screen and (min-width: 465px) {
     .socialsSmall {
-        display:none;
+        display: none;
     }
     .socialsLarge {
-        display:flex;
+        display: flex;
     }
 }
 
@@ -9535,14 +9545,13 @@ header .logo {
 }
 
 #nav-main {
-	margin-top: 15px;
+    margin-top: 15px;
     z-index: 1000;
-	margin-right: 0px;
+    margin-right: 0px;
 }
 
 @media screen and (min-width: 992px) {
-    #nav-main {
-    }
+    #nav-main {}
 }
 
 #nav-main .navbar-collapse {
@@ -9595,7 +9604,7 @@ header .logo {
     position: absolute;
     right: 15px;
     z-index: 2000;
-	font-size: 11px;
+    font-size: 11px;
 }
 
 @media screen and (min-width: 992px) {
@@ -9622,9 +9631,7 @@ header .logo {
     }
 }
 
-.navbar .list-actions .link-register {
-    
-}
+.navbar .list-actions .link-register {}
 
 .list-actions li {
     display: inline-block;
@@ -9850,6 +9857,7 @@ header .content {
 .arrow img {
     width: 55px;
 }
+
 
 
 
@@ -10227,8 +10235,8 @@ header .content {
 #svg-debt-market {
     -webkit-transform: scale(1.4);
     transform: scale(1.4);
-    width:100%;
-    height:100%;
+    width: 100%;
+    height: 100%;
 }
 
 #section-debt-market {
@@ -10666,13 +10674,14 @@ footer .logo {
 .teamDescriptions {
     height: 170px;
 }
+
 @media (max-width:1200px) and (min-width:990px) {
     .teamDescriptions {
-        height:200px;
+        height: 200px;
     }
-}​
+}
 
-#teamInner h2.team-spill {
+​ #teamInner h2.team-spill {
     background: linear-gradient(to right, #ef8121, #ec6224);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
