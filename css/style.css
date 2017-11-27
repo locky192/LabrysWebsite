@@ -3601,8 +3601,31 @@ tbody.collapse.show {
     color: #ef8121;
 }
 
+.headerContainer {
+    margin: 0px;
+    width:100% !important;
+}
+.headerContainer {
+    margin:0;
+    width: 100%;
+}
+
+.headerContainer-fluid {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 15px;
+    padding-left: 15px;
+    width: 100%;
+}
+
 .labrysLink {
     color: #AEAEAE!important;
+}
+
+.labrysLogo {
+    margin-left: 10px !important;
+    margin-right: 0 !important;
 }
 
 @media screen and (max-width:991px){
