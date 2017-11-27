@@ -9,6 +9,12 @@
     color: grey!important;
 }
 
+@media screen and (max-width:991px){
+    .tokenCountdown {
+        padding-top: 60px;
+    }
+}
+
 @media print {
     *,
     *::before,

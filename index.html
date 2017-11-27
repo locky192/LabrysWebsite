@@ -152,6 +152,11 @@ $(document).ready(function() {
         padding-bottom: 20px;
         padding-top: 50px;
     }
+    @media screen and (max-width: 991px) {
+        .containerz {
+            height: 126px;
+        }
+    }
 
     .typed-cursor {
         opacity: 1;
@@ -245,8 +250,10 @@ $(document).ready(function() {
                 <div class="containerz">
                     <span class="write"></span>
                 </div>
-                <p id="tokensale">Token Sale Starts</p>
-                <div id="clock"></div>
+                <div class="tokenCountdown">
+                    <p id="tokensale">Token Sale Starts</p>
+                    <div id="clock"></div>
+                </div>
             </div>
             <div class="arrow">
                 <a id="click" onmouseover="" style="cursor: pointer;">
