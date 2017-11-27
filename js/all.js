@@ -29564,7 +29564,7 @@
     }]
 }, {}, [15]);
 var sections = $('.navS'),
-    nav = $('nav'),
+    nav = $('nav .fixedNav'),
     nav_height = nav.outerHeight();
 $(window).bind('scroll', function() {
     var cur_pos = $(this).scrollTop();

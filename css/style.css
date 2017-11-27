@@ -13,6 +13,13 @@
     width:120px !important;
 }
 
+@media screen and (min-width: 992px) {
+    .navBarRight {
+        float:inherit;
+        margin-left:250px;
+    }
+}
+
 @media screen and (max-width:991px){
     .tokenCountdown {
         padding-top: 60px;
@@ -8875,6 +8882,10 @@ a:active {
 
 section {
     padding: 60px 0;
+}
+
+.homeSection {
+    padding:0 !important;
 }
 
 .navS {
