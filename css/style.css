@@ -795,6 +795,14 @@ pre code {
     width: 100%;
 }
 
+.containerTeam {
+    margin-right: 0;
+    margin-left: 0;
+    padding-right: 5px;
+    padding-left: 5px;
+    width: 100%;
+}
+
 @media (min-width: 576px) {
     .container {
         max-width: 540px;
@@ -4363,6 +4371,10 @@ tbody.collapse.show {
     padding: 0.75rem 1.25rem;
     background-color: rgba(0, 0, 0, 0.03);
     border-top: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.card-footer i{
+    color:#ee7423 !important;
 }
 
 .card-footer:last-child {
@@ -10841,13 +10853,25 @@ footer .logo {
     height: 100px;
 }
 
+@media (max-width:1025px) and (min-width:992px) {
+    .card-title {
+        height:40px;
+    }
+}
+
+@media screen and (min-width: 1026px) {
+    .nameAndTitle{
+        height:90px;
+    }
+}
+
 .teamDescriptions {
-    height: 170px;
+    height: 110px;
 }
 
 @media (max-width:1200px) and (min-width:990px) {
     .teamDescriptions {
-        height: 200px;
+        height: 160px;
     }
 }
 
@@ -10872,14 +10896,14 @@ footer .logo {
 }
 
 #teamInner .card .card-img-top {
-    max-width: 60%;
+    max-width: 40%;
     margin: 0 auto;
     display: block;
 }
 
 @media screen and (min-width: 992px) {
     #teamInner .card .card-img-top {
-        max-width: 100%;
+        max-width: 60%;
     }
 }
 
