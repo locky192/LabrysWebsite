@@ -241,6 +241,7 @@ h6 {
 p {
     margin-top: 0;
     margin-bottom: 1rem;
+    font-size: 1.3rem;
     font-family: 'Roboto',sans-serif !important;
     font-weight: 400 !important;
     color:#AEAEAE !important;
@@ -8914,6 +8915,10 @@ a.text-dark:hover {
 .icon-facebook:before {
     content: "\ea90";
 }
+/*
+.icon-bitcoin {
+    content: "\ea90";
+}*/
 
 .icon-telegram:before {
     content: "\ea95";
@@ -10762,7 +10767,7 @@ footer .logo {
 
 .footer-list li {
     display: block;
-    color: white;
+    color: #AEAEAE;
 }
 
 @media screen and (min-width: 768px) {
@@ -10796,11 +10801,11 @@ footer .logo {
 }
 
 .footer-social i {
-    color: white;
+    color: #AEAEAE;
 }
 
 .footer-social a {
-    color: white;
+    color: #AEAEAE;
     margin-right: 15px;
     padding-top: 4px;
     font-size: 1.5rem;
@@ -10813,6 +10818,7 @@ footer .logo {
 .footer-social i:hover {
     text-decoration: none;
     color: #ef8121;
+
 }
 
 .footer-social a:hover {
@@ -10903,7 +10909,7 @@ footer .logo {
 
 @media screen and (min-width: 992px) {
     #teamInner .card .card-img-top {
-        max-width: 60%;
+        max-width: 40%;
     }
 }
 
