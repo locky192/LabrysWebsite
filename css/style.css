@@ -13,6 +13,62 @@
     width:120px !important;
 }
 
+.landingBtns {
+    width:625px;
+    margin:0 auto;
+}
+
+/* Buttons styles */
+input::-moz-focus-inner,
+button::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+a.ghostBtn,.ghostBtn {
+    margin: 0.1rem;
+    display: inline-block;
+    outline: none;
+    *zoom: 1;
+    text-align: center;
+    text-decoration: none;
+    font-family: inherit;
+    font-weight: 300;
+    letter-spacing: 1px;
+    vertical-align: middle;
+    border: 1px solid;
+    border-radius: 0.5em;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.01);
+}
+
+.ghostBtn-large {
+    width:15em;
+    font-size: 1.0625em;
+    padding: 20px 30px;
+}
+
+.ghostBtn-blue {
+    color: white  !important;
+    border-color: #ef8121 !important;
+}
+.ghostBtn-blue:hover {
+  background: white !important;
+  color: #ef8121 !important;
+  border-color: #ef8121 !important;   
+  transition: all 0.4s ease-in-out;     
+}
+
+.landingBtnImg {
+    width:auto; 
+    float:left; 
+    height:1.0625em; 
+    margin: auto;
+    vertical-align: middle; 
+    display: inline-block;
+}
+
 @media screen and (max-width:991px){
     .tokenCountdown {
         padding-top: 60px;
