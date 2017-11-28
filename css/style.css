@@ -74,11 +74,11 @@ a.ghostBtn,.ghostBtn {
 }
 
 .ghostBtn-blue {
-    color: white  !important;
+    color: #AEAEAE  !important;
     border-color: #ef8121 !important;
 }
 .ghostBtn-blue:hover {
-  background: white !important;
+  background: #AEAEAE !important;
   color: #ef8121 !important;
   border-color: #ef8121 !important;   
   transition: all 0.4s ease-in-out;     
@@ -93,10 +93,8 @@ a.ghostBtn,.ghostBtn {
     display: inline-block;
 }
 
-@media screen and (max-width:991px){
-    .tokenCountdown {
-        padding-top: 10px;
-    }
+.tokenCountdown {
+    padding-top: 30px;
 }
 
 @media print {
@@ -9946,6 +9944,7 @@ header .content {
     color: #AEAEAE;
     text-align: center;
     font-family: Open Sans;
+    font-size: 0.7em;
 }
 
 
