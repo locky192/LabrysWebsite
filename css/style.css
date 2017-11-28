@@ -10143,12 +10143,6 @@ header .content {
     padding-top: 20px;
 }
 
-@media screen and (max-width: 500px) {
-    #spill .media img {
-        max-width: 100%;
-    }
-}
-
 @media screen and (min-width: 992px) {
     #spill .media img {
         padding-top: 82px;
@@ -10169,7 +10163,7 @@ header .content {
         -webkit-box-ordinal-group: 2;
         -ms-flex-order: 1;
         order: 1;
-        height: auto;
+        height: 495px;
         width: 520px;
     }
     #spill .media .img-container img {
@@ -10216,6 +10210,7 @@ header .content {
     top: 0;
     left: 0;
     z-index: 5;
+    height: auto;
 }
 
 #bondsInner {
