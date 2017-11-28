@@ -13,6 +13,17 @@
     width:120px !important;
 }
 
+.circleCountdownParent {
+    width:400px; 
+    margin: auto;
+}
+
+@media screen and (max-width: 410px) {
+    .circleCountdownParent {
+        width:300px;
+    }
+}
+
 .landingBtns {
     width:33em;
     margin:0 auto;
@@ -95,6 +106,12 @@ a.ghostBtn,.ghostBtn {
 
 .tokenCountdown {
     padding-top: 30px;
+}
+
+@media screen and (max-width: 447px) {
+    .tokenCountdown {
+        padding-top: 10px;
+    }
 }
 
 @media print {
@@ -9981,6 +9998,12 @@ header .content {
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+}
+
+@media screen and (max-width: 447px) {
+    .arrow {
+        bottom:2px;
+    }
 }
 
 .arrow img {
