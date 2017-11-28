@@ -9214,7 +9214,7 @@ section {
 
 @media screen and (min-width: 992px) {
     #bondsInner {
-        padding-bottom: 0;
+        padding-bottom: 20px;
     }
 }
 
