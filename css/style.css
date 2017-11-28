@@ -213,7 +213,7 @@ body {
     line-height: 1.5;
     color: #212529;
     text-align: left;
-    background-color: #fff;
+    background-color: #171717;
     overflow-x: hidden;
     overflow-y: hidden;
 }
@@ -241,6 +241,9 @@ h6 {
 p {
     margin-top: 0;
     margin-bottom: 1rem;
+    font-family: 'Roboto',sans-serif !important;
+    font-weight: 400 !important;
+    color:#AEAEAE !important;
 }
 
 abbr[title],
@@ -318,6 +321,7 @@ a {
     text-decoration: none;
     background-color: transparent;
     -webkit-text-decoration-skip: objects;
+    font-family: 'Roboto', sans-serif !important;
 }
 
 a:hover {
@@ -551,6 +555,7 @@ h2,
 h3,
 .h3 {
     font-size: 1.75rem;
+    color:#AEAEAE !important;
 }
 
 h4,
@@ -561,6 +566,7 @@ h4,
 h5,
 .h5 {
     font-size: 1.25rem;
+    color:#646464 !important;
 }
 
 h6,
@@ -8857,6 +8863,11 @@ a.text-dark:hover {
     font-style: normal;
 }
 
+@font-face {
+    font-family: "Roboto";
+    src: url(/fonts/roboto/Roboto-Thin.ttf) format("truetype");
+}
+
 [class^="icon-"],
 [class*=" icon-"] {
     /* use !important to prevent issues with browser extensions that change fonts */
@@ -8923,17 +8934,17 @@ h2,
 h3,
 h4,
 h5 {
-    font-family: "bebas_neueregular";
+    font-family: 'Roboto', sans-serif !important;
+    font-weight: 100;
+    font-style: normal;
+    font-variant-ligatures: common-ligatures;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing:antialiased;
+    text-size-adjusted:100%;
 }
 
 .subres {
     text-align: center
-}
-
-section h1,
-section h2,
-section h3 {
-    text-transform: uppercase;
 }
 
 section h2,
@@ -9167,7 +9178,7 @@ section {
 }
 
 #bondsInner {
-    background: #e6e5e5 url(/img/bull.jpg) 0 100% no-repeat;
+    background: #171717;
     background-size: contain;
     position: relative;
 }
@@ -9373,7 +9384,7 @@ section {
 }
 
 #roadmapInner {
-    background: white;
+    background: #171717;
     background-size: 100% auto;
 }
 
@@ -9385,7 +9396,7 @@ section {
 
 #roadmapInner p {
     color: #ef8121;
-    -webkit-text-fill-color: black;
+    -webkit-text-fill-color: #AEAEAE;
 }
 
 #roadmapInner p strong {
@@ -9529,6 +9540,7 @@ section {
     margin: 0;
     padding: 0 0 25px 34%;
     position: relative;
+    color:#AEAEAE;
 }
 
 @media screen and (min-width: 768px) {
@@ -10072,7 +10084,7 @@ header .content {
 
 
 #spill {
-    background: #171717 url(/img/bg-ico.jpg) 0 0 no-repeat;
+    background: #171717;
     background-size: 100% auto;
     position: relative;
     z-index: 10;
@@ -10178,7 +10190,7 @@ header .content {
 }
 
 #bondsInner {
-    background: #e6e5e5 url(/img/bull.jpg) 0 100% no-repeat;
+    background: #171717;
     background-size: contain;
     position: relative;
 }
@@ -10349,7 +10361,7 @@ header .content {
 }
 
 #futureInner {
-    background: white;
+    background: #171717;
     z-index: 20;
     position: relative;
     overflow: hidden;
@@ -10528,7 +10540,7 @@ header .content {
 }
 
 #icoInner {
-    background: #171717 url(/img/bg-ico.jpg) 0 0 no-repeat;
+    background: #171717;
     background-size: 100% auto;
     position: relative;
     z-index: 10;
@@ -10720,7 +10732,7 @@ footer:after {
     position: absolute;
     top: 0;
     left: 0;
-    background: url(/img/bg-ico.jpg) 0 0 repeat;
+    background-color: #171717;
     -webkit-transform: rotate(180deg);
     transform: rotate(180deg);
     z-index: -1;
@@ -10802,7 +10814,7 @@ footer .logo {
 }
 
 #teamInner {
-    background: #171717 url(/img/bg-ico.jpg) 0 0 no-repeat;
+    background: #171717;
     background-size: 100% auto;
     position: relative;
     z-index: 10;
@@ -10949,7 +10961,7 @@ footer .logo {
 }
 
 #faqInner {
-    background: white;
+    background: #171717;
     max-width: 900px;
     margin: 0 auto;
     padding-left: 20px;
@@ -10973,6 +10985,7 @@ footer .logo {
     text-transform: capitalize;
     margin-top: 50px;
     margin-bottom: 20px;
+    color:#AEAEAE;
 }
 
 #faqInner p {
@@ -10981,15 +10994,16 @@ footer .logo {
 }
 
 #faqInner .item {
-    border: 1px solid #171717;
+    border: 1px solid #ef8121;
     margin-bottom: 15px;
+    border-radius: 4px;
 }
 
 #faqInner a[data-toggle] {
     font-weight: bold;
     display: block;
     text-decoration: none;
-    color: #646464;
+    color: #AEAEAE;
     padding: 20px;
     font-size: 1rem;
 }
