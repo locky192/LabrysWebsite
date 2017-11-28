@@ -10000,6 +10000,12 @@ header .content {
     transform: translate(-50%, -50%);
 }
 
+@media screen and (max-width: 800px) {
+    .arrow {
+        bottom:5px;
+    }
+}
+
 @media screen and (max-width: 447px) {
     .arrow {
         bottom:2px;
