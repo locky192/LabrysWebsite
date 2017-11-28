@@ -29577,8 +29577,6 @@ $(window).bind('scroll', function() {
             nav.find('a').removeClass('activeNavBar');
             sections.removeClass('activeNavBar');
 
-            $(this).addClass('activeNavBar');
-
             nav.find('a[href="#' + $(this).attr('id') + '"]').addClass('activeNavBar');
         }
     });
