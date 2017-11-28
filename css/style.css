@@ -13,36 +13,6 @@
     width:120px !important;
 }
 
-@media screen and (min-width: 992px) {
-    .navbar-nav {
-        padding-left: 0;
-    }
-}
-
-/*@media screen and (min-width: 1024px) {
-    .navbar-nav {
-        padding-left: 320px !important;
-    }
-}
-
-@media screen and (min-width: 1280px) {
-    .navbar-nav {
-        padding-left: 580px !important;
-    }
-}
-
-@media screen and (min-width: 1440px) {
-    .navbar-nav {
-        padding-left: 730px !important;
-    }
-}
-
-@media screen and (min-width: 2560px) {
-    .navbar-nav {
-        padding-left: 1850px !important;
-    }
-}*/
-
 @media screen and (max-width:991px){
     .tokenCountdown {
         padding-top: 60px;
@@ -3762,7 +3732,7 @@ tbody.collapse.show {
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    padding: 0.5rem 1rem;
+    padding: 1rem 1rem;
 }
 
 .navbar>.container,
@@ -3810,7 +3780,6 @@ tbody.collapse.show {
 
 @media screen and (min-width: 992px) {
     .navbar-nav {
-        width:562px;
         float:right;
     }
 }
@@ -9614,14 +9583,20 @@ header .logo {
 @media screen and (min-width: 992px) {
     header .logo {
         width: 180px;
-        margin: 90px auto 0;
+        margin: 0px auto 0;
     }
 }
 
 #nav-main {
-    margin-top: 15px;
+    margin-top: 0;
     z-index: 1000;
     margin-right: 0px;
+}
+
+.fade-in {
+    background-color:rgb(23,23,23);
+    -moz-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
 }
 
 @media screen and (min-width: 992px) {

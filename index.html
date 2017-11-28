@@ -16,6 +16,17 @@ $(document).ready(function() {
 
     $("ul#myList").css("column-count", Math.round(numitems / 2));
 });
+$(function () {
+    $(window).scroll(function () {
+        var top_offset = $(window).scrollTop();
+        if (top_offset == 0) {
+            $('.navbar-expand-lg').removeClass('fixed-top fade-in');
+            $('.navbar-nav a').removeClass('activeNavBar');
+        } else {
+            $('.navbar-expand-lg').addClass('fixed-top fade-in');
+        }
+    })
+});
 </script>
 
 <head>
@@ -114,7 +125,7 @@ $(document).ready(function() {
                 <div class="spinner"></div>
             </div>
             <div class="headerContainer">
-                <nav class="navbar navbar-expand-lg" id="nav-main">
+                <nav class="navbar navbar-expand-lg fixed-top" id="nav-main">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -198,48 +209,6 @@ $(document).ready(function() {
             </div>
         </header>
     </section>
-    <nav class="navbar nav-up fixed-top navbar-expand-lg" id="nav-secondary">
-        <div class="container">
-            <a class="navbar-brand" href="#"><img src="/img/logo.svg" /></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent2">
-                <ul class="navbar-nav">
-                    <li class="nav-item fixedNav">
-                        <a class="nav-link" href="#bonds">Bonds</a>
-                    </li>
-                    <li class="nav-item fixedNav">
-                        <a class="nav-link" href="#labToken">LAB Token</a>
-                    </li>
-                    <li class="nav-item fixedNav">
-                        <a class="nav-link" href="#crowdfunding">Crowdfunding</a>
-                    </li>
-                    <li class="nav-item fixedNav">
-                        <a class="nav-link" href="#roadmap">Roadmap</a>
-                    </li>
-                    <li class="nav-item fixedNav">
-                        <a class="nav-link" href="#team">Team</a>
-                    </li>
-                    <li class="nav-item fixedNav">
-                        <a class="nav-link disabled" href="#faq">FAQ</a>
-                    </li>
-                </ul>
-            </div>
-            <ul class="navbar-nav my-2 my-lg-0 list-actions">
-                <li>
-                    <a href="/pdf/labrys_whitepaper_v1.pdf" target="_blank" onclick="window.open('/pdf/labrys_whitepaper_v1.pdf')">
-                        <button type="button">Whitepaper</button>
-                    </a>
-                </li>
-                <li>
-                    <a class="link-register" target="_blank">
-                        <button type="button"><span>Register</span></button>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
     <section id="register">
         <div class="container">
             <h2>Subscribe</h2>
