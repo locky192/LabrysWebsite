@@ -4983,6 +4983,12 @@ tbody.collapse.show {
     flex: 1;
 }
 
+@media screen and (min-width: 1200px) {
+    .media-body h3{
+        height:70px;
+    }
+}
+
 .list-group {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -10135,6 +10141,12 @@ header .content {
 #spill .media img {
     max-width: 500px;
     padding-top: 20px;
+}
+
+@media screen and (max-width: 500px) {
+    #spill .media img {
+        max-width: 100%;
+    }
 }
 
 @media screen and (min-width: 992px) {
