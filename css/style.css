@@ -78,7 +78,6 @@ a.ghostBtn,.ghostBtn {
     border-color: #ef8121 !important;
 }
 .ghostBtn-blue:hover {
-  background: #AEAEAE !important;
   color: #ef8121 !important;
   border-color: #ef8121 !important;   
   transition: all 0.4s ease-in-out;     
