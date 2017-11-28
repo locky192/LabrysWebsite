@@ -14,7 +14,7 @@
 }
 
 .landingBtns {
-    width:625px;
+    width:33em;
     margin:0 auto;
 }
 
@@ -46,7 +46,31 @@ a.ghostBtn,.ghostBtn {
 .ghostBtn-large {
     width:15em;
     font-size: 1.0625em;
-    padding: 20px 30px;
+    padding: 1em 1.5em;
+}
+
+@media screen and (max-width: 800px) {
+    .landingBtns {
+        padding-top: 60px;
+        width:18.26em;
+    }
+
+    .ghostBtn-large {
+        width:11em;
+        font-size:0.8em;
+    }
+}
+
+@media screen and (max-width: 447px) {
+    .landingBtns {
+        padding-top: 120px;
+        width:18.29em;
+    }
+
+    .ghostBtn-large {
+        width:11em;
+        font-size:0.8em;
+    }
 }
 
 .ghostBtn-blue {
@@ -71,7 +95,7 @@ a.ghostBtn,.ghostBtn {
 
 @media screen and (max-width:991px){
     .tokenCountdown {
-        padding-top: 60px;
+        padding-top: 10px;
     }
 }
 
