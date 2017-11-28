@@ -15,11 +15,11 @@
 
 @media screen and (min-width: 992px) {
     .navbar-nav {
-        padding-left: 850px !important;
+        padding-left: 0;
     }
 }
 
-@media screen and (min-width: 1024px) {
+/*@media screen and (min-width: 1024px) {
     .navbar-nav {
         padding-left: 320px !important;
     }
@@ -41,7 +41,7 @@
     .navbar-nav {
         padding-left: 1850px !important;
     }
-}
+}*/
 
 @media screen and (max-width:991px){
     .tokenCountdown {
