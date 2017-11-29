@@ -9093,6 +9093,10 @@ section {
     background: white;
 }
 
+#register .email {
+    margin:10px;
+}
+
 #register h2 {
     text-align: center;
     color: #171717;
@@ -9154,12 +9158,12 @@ section {
     -webkit-box-flex: 2;
     -ms-flex-positive: 2;
     flex-grow: 2;
-    border: 3px solid #ef8121;
-    border-right: none;
+    border: 1px solid #ef8121;
     padding: 12px 7px;
     position: relative;
-    border-radius: none;
+    border-radius: 4px 0px 0px 4px;
     -webkit-appearance: none;
+    margin-right: 0 !important;
 }
 
 #register form input[type="email"]:focus {
@@ -9173,9 +9177,22 @@ section {
     flex-grow: 1;
     cursor: pointer;
     padding: 12px 8px;
-    font-family: "bebas_neueregular";
-    font-size: 1.6rem;
-    color: white;
+    font-family: "Roboto";
+    font-size: 16px;
+    color: #ef8121;
+    height: 50px;
+    margin: 10px;
+    background: none;
+    border: 1px solid #ef8121;
+    border-left: none;
+    border-radius: 0px 4px 4px 0px;
+    margin-left: 0 !important;
+}
+
+#register form input[type="submit"]:hover {
+    background-color: #ef8121;
+    color:white;
+    transition: 0.4s;
 }
 
 .btn {
@@ -9549,7 +9566,7 @@ section {
         border-radius: 50%;
         position: relative;
         overflow: hidden;
-        border: 3px solid black;
+        border: 1px solid black;
         z-index: 1;
     }
 }
@@ -9559,6 +9576,7 @@ section {
     background: transparent;
     transition: .5s;
     z-index: 3;
+    padding-top: 15px;
 }
 
 .socials li a:hover .fa {
