@@ -13,6 +13,23 @@
     width:120px !important;
 }
 
+@media screen and (max-width: 991px) {
+    .footerUpper {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center !important;
+    }
+
+    .footerLogo {
+        text-align: center !important;
+    }
+
+    .footerLogo .logo {
+        display: inline-block;
+    }
+}
+
+
 @media screen and (min-width: 992px) {
     .labrysWalletSection {
         padding-top: 100px;
