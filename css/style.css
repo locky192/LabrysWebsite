@@ -250,7 +250,7 @@ p {
     font-size: 1.3rem;
     font-family: 'Roboto', sans-serif !important;
     font-weight: 400 !important;
-    color:#AEAEAE !important;
+    color:white !important;
 }
 
 abbr[title],
@@ -9042,7 +9042,11 @@ section {
 }
 
 .navS {
-    padding: 0;
+    padding-top: 20px;
+}
+
+.navS p {
+    color: white;
 }
 
 @media screen and (min-width: 768px) {
