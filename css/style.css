@@ -2569,7 +2569,7 @@ section{padding:60px 0;}
 .homeSection{padding:0 !important;}
 .navS{padding-top:20px;}
 .navS p{color:white;}
-@media screen and (min-width:768px){section{padding:120px 0;}
+@media screen and (min-width:768px){section{padding:30px 0;}
 }
 #nav-secondary{transition:opacity 0.03s ease-in-out;background:#171717 url(/img/bg-ico.jpg) 0 0 no-repeat;background-size:100% auto;opacity:1;border-bottom:3px solid #ef8121;}
 #nav-secondary.nav-up{opacity:0;}
