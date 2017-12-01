@@ -1,3 +1,60 @@
+<<<<<<< HEAD
+/*!
+ * Bootstrap v4.0.0-beta (https://getbootstrap.com)
+ * Copyright 2011-2017 The Bootstrap Authors
+ * Copyright 2011-2017 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+
+.activeNavBar {
+    color: white!important;
+}
+
+.countdown-container {
+    width:120px !important;
+}
+
+@media screen and (max-width: 991px) {
+    .footerUpper {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center !important;
+    }
+
+    .footerLogo {
+        text-align: center !important;
+    }
+
+    .footerLogo .logo {
+        display: inline-block;
+    }
+}
+
+
+@media screen and (min-width: 992px) {
+    .labrysWalletSection {
+        padding-top: 100px;
+    }
+}
+
+.circleCountdownParent {
+    width:400px; 
+    margin: auto;
+}
+
+@media screen and (max-width: 410px) {
+    .circleCountdownParent {
+        width:300px;
+    }
+}
+
+.landingBtns {
+    width:33em;
+    margin:0 auto;
+}
+
+/* Buttons styles */
+=======
 .activeNavBar{color:white!important;}
 .countdown-container{width:120px !important;}
 @media screen and (min-width:992px){.labrysWalletSection{padding-top:100px;}
@@ -6,6 +63,7 @@
 @media screen and (max-width:410px){.circleCountdownParent{width:300px;}
 }
 .landingBtns{width:33em;margin:0 auto;}
+>>>>>>> a3fd0e134ef98e4c8f5d3aac89c4d14ec3993d80
 input::-moz-focus-inner,
 button::-moz-focus-inner{border:0;padding:0;}
 a.ghostBtn,.ghostBtn{margin:0.1rem;display:inline-block;outline:none;*zoom:1;text-align:center;text-decoration:none;font-family:inherit;font-weight:300;letter-spacing:1px;vertical-align:middle;border:1px solid;border-radius:0.5em;transition:all 0.2s ease;box-sizing:border-box;text-shadow:0 1px 0 rgba(0,0,0,0.01);}
