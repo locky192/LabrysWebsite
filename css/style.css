@@ -14,6 +14,55 @@
     width:120px !important;
 }
 
+.mediaDiv {
+    // container of media section
+    margin-top: 80px;
+    padding-top: 40px;
+    height: calc(100% - 270px);
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+    text-align: center;
+}
+
+.mediaDiv .item {
+    padding: 10px;
+    width: 16.3%;
+    float: left;
+    height: 90px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.mediaDiv .item img {
+    filter: grayscale(100%) contrast(0%);
+    vertical-align: middle;
+    max-height: 90px;
+    max-width: 100%;
+}
+
+.mediaDiv .item img:hover {
+    filter: grayscale(0) contrast(100%);
+    transition: .5s ease-in-out;
+    -moz-transition: .5s ease-in-out;
+    -webkit-transition: .5s ease-in-out;
+}
+
+@media screen and (max-width:768px) {
+    .mediaDiv {
+        display:none;
+        height: 0;
+    }
+
+    .mediaDiv .item {
+        width:50%;
+    }
+}
+
 @media screen and (max-width: 991px) {
     .footerUpper {
         margin-left: auto;
