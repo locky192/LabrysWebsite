@@ -84,6 +84,8 @@ $(function() {
     <script src="js/jquery.throttle.js"></script>
     <link href="css/jquery.classycountdown.css" rel="stylesheet">
     <script src="js/jquery.classycountdown.js"></script>
+    <link rel="stylesheet" type="text/css" href="slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="slick/slick-theme.css" />
     <style type="text/css">
     .write {
         font-size: 44px;
@@ -219,170 +221,301 @@ $(function() {
         </header>
     </section>
     <section id="register">
-        <div class="container">
-            <h2>Interested?</h2>
-            <h2>We'll keep you updated.</h2>
-            <form class="forms emailInput" id="subscribe-form" action="https://labrys.us16.list-manage.com/subscribe/post-json?u=9b49cc6b014e6c399a79a308d&amp;id=24c25c8410" method="get">
-                <input type="hidden" name="u" value="9b49cc6b014e6c399a79a308d">
-                <input type="hidden" name="id" value="24c25c8410">
-                <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Email Address">
-                <input type="submit" value="Submit" name="subscribe" id="mc-embedded-subscribe" class="btn">
-            </form>
+        <div class="registerTop">
+            <div class="container">
+                <h2>Interested?</h2>
+                <h2>We'll keep you updated.</h2>
+                <form class="forms emailInput" id="subscribe-form" action="https://labrys.us16.list-manage.com/subscribe/post-json?u=9b49cc6b014e6c399a79a308d&amp;id=24c25c8410" method="get">
+                    <input type="hidden" name="u" value="9b49cc6b014e6c399a79a308d">
+                    <input type="hidden" name="id" value="24c25c8410">
+                    <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Email Address">
+                    <input type="submit" value="Submit" name="subscribe" id="mc-embedded-subscribe" class="btn">
+                </form>
+            </div>
+            <div id="subscribe-result" class="subres">
+            </div>
+            <!-- Fix for resizing issue, socialsLarge not displayed for screenwidth<465 -->
+            <!-- When final social is added, uncomment last in socials large and top socialsSmall and last in socialsSmalls  -->
+            <!-- also remove medium link from second ul of socialsmalls -->
+            <ul class="socials socialsLarge">
+                <li><a href="https://www.facebook.com/labrys.io/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                <li><a href="https://twitter.com/Labrys_io" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                <li><a href="mailto:info@labrys.io"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+                <li><a href="https://medium.com/labrys" target="_blank"><i class="fa fa-medium" aria-hidden="true"></i></a></li>
+                <li><a href="https://t.me/joinchat/EOaaVxGU411eVcGSr1uD4g" target="_blank"><i class="fa fa-commenting" aria-hidden="true"></i></a></li>
+                <li><a href="https://www.reddit.com/r/Labrys_io/" target="_blank"><i class="fa fa-reddit-alien" aria-hidden="true"></i></a></li>
+                <li><a href="https://bitcointalk.org/index.php?topic=2475143.0"><i class="fa fa-btc" aria-hidden="true"></i></a></li>
+            </ul>
+            <ul class="socials socialsSmall">
+                <li><a href="https://www.facebook.com/labrys.io/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                <li><a href="https://twitter.com/Labrys_io" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                <li><a href="mailto:info@labrys.io"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+                <li><a href="https://medium.com/labrys" target="_blank"><i class="fa fa-medium" aria-hidden="true"></i></a></li>
+            </ul>
+            <br>
+            <br>
+            <br>
+            <ul class="socials socialsSmall">
+                <li><a href="https://t.me/joinchat/EOaaVxGU411eVcGSr1uD4g" target="_blank"><i class="fa fa-commenting" aria-hidden="true"></i></a></li>
+                <li><a href="https://www.reddit.com/r/Labrys_io/" target="_blank"><i class="fa fa-reddit-alien" aria-hidden="true"></i></a></li>
+                <li><a href="https://bitcointalk.org/index.php?topic=2475143.0"><i class="fa fa-btc" aria-hidden="true"></i></a></li>
+            </ul>
         </div>
-        <div id="subscribe-result" class="subres">
-        </div>
-        <!-- Fix for resizing issue, socialsLarge not displayed for screenwidth<465 -->
-        <!-- When final social is added, uncomment last in socials large and top socialsSmall and last in socialsSmalls  -->
-        <!-- also remove medium link from second ul of socialsmalls -->
-        <ul class="socials socialsLarge">
-            <li><a href="https://www.facebook.com/labrys.io/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-            <li><a href="https://twitter.com/Labrys_io" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-            <li><a href="mailto:info@labrys.io"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
-            <li><a href="https://medium.com/labrys" target="_blank"><i class="fa fa-medium" aria-hidden="true"></i></a></li>
-            <li><a href="https://t.me/joinchat/EOaaVxGU411eVcGSr1uD4g" target="_blank"><i class="fa fa-commenting" aria-hidden="true"></i></a></li>
-            <li><a href="https://www.reddit.com/r/Labrys_io/" target="_blank"><i class="fa fa-reddit-alien" aria-hidden="true"></i></a></li>
-            <li><a href="https://bitcointalk.org/index.php?topic=2475143.0"><i class="fa fa-btc" aria-hidden="true"></i></a></li>
-        </ul>
-        <ul class="socials socialsSmall">
-            <li><a href="https://www.facebook.com/labrys.io/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-            <li><a href="https://twitter.com/Labrys_io" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-            <li><a href="mailto:info@labrys.io"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
-            <li><a href="https://medium.com/labrys" target="_blank"><i class="fa fa-medium" aria-hidden="true"></i></a></li>
-        </ul>
-        <br>
-        <br>
-        <br>
-        <ul class="socials socialsSmall">
-            <li><a href="https://t.me/joinchat/EOaaVxGU411eVcGSr1uD4g" target="_blank"><i class="" lass="fa fa-commenting" aria-hidden="true"></i></a></li>
-            <li><a href="https://www.reddit.com/r/Labrys_io/" target="_blank"><i class="fa fa-reddit-alien" aria-hidden="true"></i></a></li>
-            <li><a href="https://bitcointalk.org/index.php?topic=2475143.0"><i class="fa fa-btc" aria-hidden="true"></i></a></li>
-        </ul>
         <div class="mediaDiv">
             <h3>As Seen On</h3>
-            <div class="item">
-                <a href="https://icodaily.net/">
-                    <img src="img/mediaImg/icoDailyBanner.png" alt="">
-                </a>
+            <div class="mediaCar">
+                <div class="item">
+                    <a href="https://icodaily.net/">
+                        <img src="img/mediaImg/icoDailyBanner.png" alt="">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="https://99bitcoins.com/complete-ico-list-upcoming-live/">
+                        <img src="img/mediaImg/99btcs.png" alt="">
+                    </a>
+                </div>
+                <!-- <div class="item">
+                    <a href="https://www.advfn.com/cryptocurrency/icolist/LAB">
+                        <img src="img/mediaImg/advfn.gif" alt="">
+                    </a>
+                </div> -->
+                <div class="item">
+                    <a href="https://www.bitcoinmarketjournal.com/icos/labrys/">
+                        <img src="img/mediaImg/btcMarketJournal.png" alt="">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="https://bitcointalk.org/index.php?topic=2475143.0">
+                        <img src="img/mediaImg/btcTalk.png" alt="">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="https://www.coinhills.com/ico/view/labrys/">
+                        <img src="img/mediaImg/coinhills.png" alt="">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="https://www.coinjinja.com/detail/labrys">
+                        <img src="img/mediaImg/coinjinha.png" alt="">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="https://cryptocoincharts.info/ico-upcoming">
+                        <img src="img/mediaImg/coinMarket.png" alt="">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="https://www.coinspeaker.com/ico/project/labrys/">
+                        <img src="img/mediaImg/coinspeaker.png" alt="">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="https://www.cryptocompare.com/ico/#/upcoming">
+                        <img src="img/mediaImg/cryptoCompare.png" alt="">
+                    </a>
+                </div>
+                <!-- <div class="item">
+                    <a href="http://ethereumworldnews.com/ico-calendar/">
+                        <img src="img/mediaImg/ethereumWorldNews.png" alt="">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="mailto:joe@example.com?subject=feedback">
+                        <img src="img/mediaImg/medium.jpg" alt="">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="https://www.trackico.io/ico/labrys/">
+                        <img src="img/mediaImg/trackIco.png" alt="">
+                    </a>
+                </div> -->
+                <div class="item">
+                    <a href="https://icobazaar.com/v2/labrys">
+                        <img src="img/mediaImg/icoBazaar.png" alt="">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="https://icobench.com/ico/labrys">
+                        <img src="img/mediaImg/icoBench.png" alt="">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="https://icodaily.net/">
+                        <img src="img/mediaImg/icoDailybanner.png" alt="">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="https://www.icolist.com.au/starting?view_type=table">
+                        <img src="img/mediaImg/icoList.png" alt="">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="https://www.icoranker.com/labrys/">
+                        <img src="img/mediaImg/icoRanker.png" alt="">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="http://icowatchers.com/listing/labrys/">
+                        <img src="img/mediaImg/icoWatchers.png" alt="">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="https://medium.com/labrys">
+                        <img src="img/mediaImg/newsBtc.png" alt="">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="https://www.reddit.com/r/Labrys_io/">
+                        <img src="img/mediaImg/reddit.png" alt="">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="https://steemit.com/@labrys">
+                        <img src="img/mediaImg/steemit.png" alt="">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="mailto:joe@example.com?subject=feedback">
+                        <img src="img/mediaImg/tokenReport.png" alt="">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="http://tokenreport.com/tokentracker/">
+                        <img src="img/mediaImg/tokenTops.png" alt="">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="https://www.worldcoinindex.com/ico/calendar/labrys">
+                        <img src="img/mediaImg/worldCoinIndex.png" alt="">
+                    </a>
+                </div>
             </div>
-            <div class="item">
-                <a href="https://99bitcoins.com/complete-ico-list-upcoming-live/">
-                    <img src="img/mediaImg/99btcs.png" alt="">
-                </a>
-            </div>
-            <!-- <div class="item">
-                <a href="https://www.advfn.com/cryptocurrency/icolist/LAB">
-                    <img src="img/mediaImg/advfn.gif" alt="">
-                </a>
-            </div> -->
-            <div class="item">
-                <a href="https://www.bitcoinmarketjournal.com/icos/labrys/">
-                    <img src="img/mediaImg/btcMarketJournal.png" alt="">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://bitcointalk.org/index.php?topic=2475143.0">
-                    <img src="img/mediaImg/btcTalk.png" alt="">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://www.coinhills.com/ico/view/labrys/">
-                    <img src="img/mediaImg/coinhills.png" alt="">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://www.coinjinja.com/detail/labrys">
-                    <img src="img/mediaImg/coinjinha.png" alt="">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://cryptocoincharts.info/ico-upcoming">
-                    <img src="img/mediaImg/coinMarket.png" alt="">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://www.coinspeaker.com/ico/project/labrys/">
-                    <img src="img/mediaImg/coinspeaker.png" alt="">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://www.cryptocompare.com/ico/#/upcoming">
-                    <img src="img/mediaImg/cryptoCompare.png" alt="">
-                </a>
-            </div>
-            <!-- <div class="item">
-                <a href="http://ethereumworldnews.com/ico-calendar/">
-                    <img src="img/mediaImg/ethereumWorldNews.png" alt="">
-                </a>
-            </div> -->
-            <div class="item">
-                <a href="https://icobazaar.com/v2/labrys">
-                    <img src="img/mediaImg/icoBazaar.png" alt="">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://icobench.com/ico/labrys">
-                    <img src="img/mediaImg/icoBench.png" alt="">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://icodaily.net/">
-                    <img src="img/mediaImg/icoDailybanner.png" alt="">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://www.icolist.com.au/starting?view_type=table">
-                    <img src="img/mediaImg/icoList.png" alt="">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://www.icoranker.com/labrys/">
-                    <img src="img/mediaImg/icoRanker.png" alt="">
-                </a>
-            </div>
-            <div class="item">
-                <a href="http://icowatchers.com/listing/labrys/">
-                    <img src="img/mediaImg/icoWatchers.png" alt="">
-                </a>
-            </div>
-            <!-- <div class="item">
-                <a href="mailto:joe@example.com?subject=feedback">
-                    <img src="img/mediaImg/medium.jpg" alt="">
-                </a>
-            </div> -->
-            <div class="item">
-                <a href="https://medium.com/labrys">
-                    <img src="img/mediaImg/newsBtc.png" alt="">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://www.reddit.com/r/Labrys_io/">
-                    <img src="img/mediaImg/reddit.png" alt="">
-                </a>
-            </div>
-            <div class="item">
-                <a href="https://steemit.com/@labrys">
-                    <img src="img/mediaImg/steemit.png" alt="">
-                </a>
-            </div>
-            <div class="item">
-                <a href="mailto:joe@example.com?subject=feedback">
-                    <img src="img/mediaImg/tokenReport.png" alt="">
-                </a>
-            </div>
-            <div class="item">
-                <a href="http://tokenreport.com/tokentracker/">
-                    <img src="img/mediaImg/tokenTops.png" alt="">
-                </a>
-            </div>
-            <!-- <div class="item">
-                <a href="https://www.trackico.io/ico/labrys/">
-                    <img src="img/mediaImg/trackIco.png" alt="">
-                </a>
-            </div> -->
-            <div class="item">
-                <a href="https://www.worldcoinindex.com/ico/calendar/labrys">
-                    <img src="img/mediaImg/worldCoinIndex.png" alt="">
-                </a>
+            <div class="mediaGrid">
+                <div class="item">
+                    <a href="https://icodaily.net/">
+                        <img src="img/mediaImg/icoDailyBanner.png" alt="">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="https://99bitcoins.com/complete-ico-list-upcoming-live/">
+                        <img src="img/mediaImg/99btcs.png" alt="">
+                    </a>
+                </div>
+                <!-- <div class="item">
+                    <a href="https://www.advfn.com/cryptocurrency/icolist/LAB">
+                        <img src="img/mediaImg/advfn.gif" alt="">
+                    </a>
+                </div> -->
+                <div class="item">
+                    <a href="https://www.bitcoinmarketjournal.com/icos/labrys/">
+                        <img src="img/mediaImg/btcMarketJournal.png" alt="">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="https://bitcointalk.org/index.php?topic=2475143.0">
+                        <img src="img/mediaImg/btcTalk.png" alt="">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="https://www.coinhills.com/ico/view/labrys/">
+                        <img src="img/mediaImg/coinhills.png" alt="">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="https://www.coinjinja.com/detail/labrys">
+                        <img src="img/mediaImg/coinjinha.png" alt="">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="https://cryptocoincharts.info/ico-upcoming">
+                        <img src="img/mediaImg/coinMarket.png" alt="">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="https://www.coinspeaker.com/ico/project/labrys/">
+                        <img src="img/mediaImg/coinspeaker.png" alt="">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="https://www.cryptocompare.com/ico/#/upcoming">
+                        <img src="img/mediaImg/cryptoCompare.png" alt="">
+                    </a>
+                </div>
+                <!-- <div class="item">
+                    <a href="http://ethereumworldnews.com/ico-calendar/">
+                        <img src="img/mediaImg/ethereumWorldNews.png" alt="">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="mailto:joe@example.com?subject=feedback">
+                        <img src="img/mediaImg/medium.jpg" alt="">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="https://www.trackico.io/ico/labrys/">
+                        <img src="img/mediaImg/trackIco.png" alt="">
+                    </a>
+                </div> -->
+                <div class="item">
+                    <a href="https://icobazaar.com/v2/labrys">
+                        <img src="img/mediaImg/icoBazaar.png" alt="">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="https://icobench.com/ico/labrys">
+                        <img src="img/mediaImg/icoBench.png" alt="">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="https://icodaily.net/">
+                        <img src="img/mediaImg/icoDailybanner.png" alt="">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="https://www.icolist.com.au/starting?view_type=table">
+                        <img src="img/mediaImg/icoList.png" alt="">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="https://www.icoranker.com/labrys/">
+                        <img src="img/mediaImg/icoRanker.png" alt="">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="http://icowatchers.com/listing/labrys/">
+                        <img src="img/mediaImg/icoWatchers.png" alt="">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="https://medium.com/labrys">
+                        <img src="img/mediaImg/newsBtc.png" alt="">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="https://www.reddit.com/r/Labrys_io/">
+                        <img src="img/mediaImg/reddit.png" alt="">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="https://steemit.com/@labrys">
+                        <img src="img/mediaImg/steemit.png" alt="">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="mailto:joe@example.com?subject=feedback">
+                        <img src="img/mediaImg/tokenReport.png" alt="">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="http://tokenreport.com/tokentracker/">
+                        <img src="img/mediaImg/tokenTops.png" alt="">
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="https://www.worldcoinindex.com/ico/calendar/labrys">
+                        <img src="img/mediaImg/worldCoinIndex.png" alt="">
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -1420,8 +1553,8 @@ $(function() {
             days: {
                 gauge: {
                     thickness: 0.04,
-                    bgColor: '#E1792C',
-                    fgColor: '#AEAEAE',
+                    bgColor: 'transparent',
+                    fgColor: '#E1792C',
                     lineCap: 'butt'
                 },
                 textCSS: 'color:#AEAEAE; font-family:Open Sans;'
@@ -1429,8 +1562,8 @@ $(function() {
             hours: {
                 gauge: {
                     thickness: 0.04,
-                    bgColor: '#E1792C',
-                    fgColor: '#AEAEAE',
+                    bgColor: 'transparent',
+                    fgColor: '#E1792C',
                     lineCap: 'butt'
                 },
                 textCSS: 'color:#AEAEAE; font-family:Open Sans;'
@@ -1438,8 +1571,8 @@ $(function() {
             minutes: {
                 gauge: {
                     thickness: 0.04,
-                    bgColor: '#E1792C',
-                    fgColor: '#AEAEAE',
+                    bgColor: 'transparent',
+                    fgColor: '#E1792C',
                     lineCap: 'butt'
                 },
                 textCSS: 'color:#AEAEAE; font-family:Open Sans;'
@@ -1447,8 +1580,8 @@ $(function() {
             seconds: {
                 gauge: {
                     thickness: 0.04,
-                    bgColor: '#E1792C',
-                    fgColor: '#AEAEAE',
+                    bgColor: 'transparent',
+                    fgColor: '#E1792C',
                     lineCap: 'butt'
                 },
                 textCSS: 'color:#AEAEAE; font-family:Open Sans;'
@@ -1459,7 +1592,19 @@ $(function() {
         onEndCallback: function() {}
 
     });
+    var $jq = jQuery.noConflict();
+    $jq(document).ready(function() {
+        $jq('.mediaCar').slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 2000,
+        });
+    });
     </script>
+    <!-- <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script> -->
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="slick/slick.min.js"></script>
 </body>
 
 </html>

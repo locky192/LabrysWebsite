@@ -36,13 +36,18 @@
     margin-top: 30px;
     margin-bottom: 30px;
     text-align: center;
+    position: relative;
 }
 
 .mediaDiv .item img {
     filter: grayscale(100%) contrast(0%);
-    vertical-align: middle;
     max-height: 90px;
     max-width: 100%;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
 .mediaDiv .item img:hover {
@@ -52,14 +57,17 @@
     -webkit-transition: .3s ease-in-out;
 }
 
+.mediaCar {
+    display: none !important;
+}
+
 @media screen and (max-width:768px) {
-    .mediaDiv {
-        display: none;
-        height: 0;
+    .mediaGrid {
+        display: none !important;
     }
 
-    .mediaDiv .item {
-        width: 50%;
+    .mediaCar {
+        display: block !important;
     }
 }
 
@@ -177,7 +185,7 @@ a.ghostBtn,
     }
 }
 
-@media screen and (max-width:447px) {
+@media screen and (max-width:406px) {
     .landingBtns {
         padding-top: 120px;
         width: 18.29em;
@@ -321,6 +329,11 @@ body {
     background-color: #171717;
     overflow-x: hidden;
     overflow-y: hidden;
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
 }
 
 [tabindex="-1"]:focus {
@@ -9062,6 +9075,12 @@ section h3 {
     font-size: 48px;
 }
 
+// @media screen and (max-width: 555px){
+//     #register h3 {
+//         padding-top: 60px;
+//     }
+// }
+
 section p:last-of-type {
     margin-bottom: 0;
 }
@@ -9147,6 +9166,12 @@ section {
     width: 100%;
 }
 
+@media screen and (max-width:555px) {
+    #register {
+        padding-bottom: 0px;
+    }
+}
+
 #register .email {
     margin: 10px;
 }
@@ -9156,6 +9181,12 @@ section {
     color: #171717;
     -webkit-text-fill-color: #171717;
     font-size: 2.5rem;
+}
+
+@media screen and (max-width: 555px){
+    #register h3 {
+        padding-top: 100px;
+    }
 }
 
 #register p {
@@ -9597,13 +9628,14 @@ section {
     display: none;
 }
 
-@media screen and (min-width:465px) {
+@media screen and (min-width:555px) {
     .socialsSmall {
         display: none;
     }
     .socialsLarge {
         display: flex;
     }
+
 }
 
 @media screen and (min-width:768px) {
