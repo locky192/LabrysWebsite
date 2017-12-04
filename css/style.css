@@ -7,7 +7,7 @@
  */
 
 .activeNavBar {
-    color: white!important;
+    color: white;
 }
 
 .countdown-container {
@@ -112,10 +112,6 @@
 
 
 /* Buttons styles */
-
-=======.activeNavBar {
-    color: white!important;
-}
 
 .countdown-container {
     width: 120px !important;
@@ -681,6 +677,7 @@ h3,
 h4,
 .h4 {
     font-size: 1.5rem;
+	color: white !important;
 }
 
 h5,
@@ -8776,6 +8773,12 @@ a.bg-dark:hover {
     text-align: justify;
 }
 
+.text-centeri {
+    text-align: left !important;
+	color: white !important;
+	
+}
+
 .columne {
     float: left;
     width: 33.33%;
@@ -9904,7 +9907,7 @@ header .logo {
 
 #nav-main a:hover {
     text-decoration: none;
-    color: #ef8121;
+    color: #ef8121 !important;
 }
 
 #nav-main .nav-item {
