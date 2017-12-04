@@ -17,9 +17,9 @@
 .mediaDiv {
     // container of media section
     margin-top: 80px;
-    padding-top: 40px;
+    padding-top: 100px;
     height: calc(100% - 270px);
-    width: 80%;
+    width: 60%;
     margin-right: auto;
     margin-left: auto;
     position: relative;
@@ -30,7 +30,7 @@
     padding: 10px;
     width: 16.3%;
     float: left;
-    height: 90px;
+    height: 30px;
     display: inline-block;
     vertical-align: middle;
     margin-top: 30px;
@@ -253,6 +253,7 @@ a.ghostBtn,
     h3 {
         orphans: 3;
         widows: 3;
+		
     }
     h2,
     h3 {
@@ -9059,7 +9060,7 @@ section h1 {
 }
 
 section h3 {
-    font-size: 48px;
+    font-size: 28px;
 }
 
 section p:last-of-type {
@@ -9089,7 +9090,7 @@ section {
 }
 
 .navS {
-    padding-top: 20px;
+    padding-top: 60px;
 }
 
 .navS p {
@@ -9098,7 +9099,8 @@ section {
 
 @media screen and (min-width:768px) {
     section {
-        padding: 30px 0;
+        padding-top: 50px;
+		padding-bottom: 20px
     }
 }
 
